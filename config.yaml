@@ -1,0 +1,40 @@
+# DROS 7.0 全局配置檔
+version: "7.0"
+
+# ====================== 路徑設定 ======================
+paths:
+  core: "./core/AI 智者"
+  vault: "./Vault_DajueZang"
+  contracts: "./contracts"
+  docs: "./docs"
+  logs: "./logs"
+
+# ====================== 模型策略 ======================
+models:
+  default_router: "gemini-2.5-flash-lite"
+  default_synthesizer: "gemini-3.1-pro"
+  fallback: "gemini-2.5-flash-lite"
+
+# ====================== 系統行為 ======================
+system:
+  hardening_level: 7
+  default_mode: "Bodhisattva"        # Vajra 或 Bodhisattva
+  authority_nodes_only: true
+  max_context_length: 12000
+  warning_context_length: 8000
+
+# ====================== GuardVM 設定 ======================
+guard_vm:
+  strict_forbidden_phrases:
+    - "我認為"
+    - "我覺得"
+    - "大概是"
+    - "可能"
+    - "應該是"
+    - "我猜"
+  require_t_number: true
+
+# ====================== 日誌設定 ======================
+logging:
+  level: "INFO"
+  format: "%(asctime)s | %(name)s | %(levelname)s | %(message)s"

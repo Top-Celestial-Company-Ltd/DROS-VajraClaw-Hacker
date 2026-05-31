@@ -1,0 +1,25 @@
+# ---------------------------------------------------------
+# VajraClaw Free Trial - Prebuilt Demo Policy
+# ---------------------------------------------------------
+# This policy is loaded by the VajraClaw O(1) Memory Matrix.
+# It simulates an enterprise constraint where the agent is 
+# NOT allowed to execute destructive SQL commands or 
+# transfer large amounts of money.
+
+tool_policies:
+  - tool_name: "execute_sql"
+    action: "BLOCK"
+    conditions:
+      - field: "query"
+        operator: "contains"
+        value: "DROP TABLE"
+      - field: "query"
+        operator: "contains"
+        value: "DELETE FROM"
+
+  - tool_name: "execute_payment"
+    action: "BLOCK"
+    conditions:
+      - field: "amount"
+        operator: ">"
+        value: 1000
