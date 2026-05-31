@@ -1,4 +1,6 @@
 # 🛡️ DROS™ VajraClaw (Free Trial PLG)
+[![Official Website](https://img.shields.io/badge/Website-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
+
 **Version: v1.0.0-free**
 
 **The Execution Governance Standard for Agentic AI**
