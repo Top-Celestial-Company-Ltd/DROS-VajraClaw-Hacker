@@ -1,83 +1,82 @@
-# 🛡️ DROS - 自主型 AI Agent 系統執行治理標準
-## (DROS: Deterministic Runtime Operating System)
+# ⚡ DROS™ VajraClaw (Hacker Edition 個人免費版)
+### 專為個人開發者打造的獨立 Docker 執行期治理網關 (支援 W3C DID、<1μs 微秒級熔斷與多 Agent 聯防)
 
-> **企業級自主 AI 系統不可或缺的底層執行治理架構。**
+[![官方網站](https://img.shields.io/badge/官方網站-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
+[![Docker Ready](https://img.shields.io/badge/Docker-Ready-blue.svg)](#)
+[![個人免費授權](https://img.shields.io/badge/授權-個人永久免費-green.svg)](#)
+[![美國臨時專利](https://img.shields.io/badge/美國臨時專利-64%2F111%2C973-blue.svg)](#)
+[![RFC-010 護照標準](https://img.shields.io/badge/標準-RFC--010_Draft-orange.svg)](#)
 
-[English](README.md) | [繁體中文](README_zh.md)
+[English](README.md) | [繁體中文說明](README_zh.md) | [🌐 官方網站](https://dr-os.io)
 
-DROS (確定性運行期作業系統 / Deterministic Runtime Operating System) 是一套針對 Agentic AI 的隱形、高可靠執行治理基礎設施。它完全獨立於 LLM 語意推理空間之外，物理性地駐留在 Agent 工具調用輸出與企業核心作業系統/資料庫之間。
-
----
-
-## 1. 核心問題：機率型 AI 資安的必然潰敗
-
-缺乏執行期硬控制的 AI Agent，猶如一把隨時可能走火的武器。傳統依賴「LLM-as-a-judge」或自然語言 Prompt Guard 的資安手法無法防禦企業風險：
-*   **提示注入 (Prompt Injection)**：零日語意攻擊能輕易穿透自然語言防護層。
-*   **TOCTOU 與延遲**：在運行期解析 JSON 或調用第三方模型會產生不可預測的延遲與競爭漏洞。
-*   **缺乏可審計性**：無法從密碼學上證明 *為什麼* 一個提示工程封裝允許了某項危險特權操作。
+**DROS VajraClaw Hacker Edition** 是官方專為個人開發者、研究人員及獨立工作站打造的**永久免費獨立 Docker 治理網關 (Free License for Individuals)**。它在自主 AI Agent（Google Antigravity、OpenAI Codex、Claude Code、Cursor、DeepSeek Harness）與您的本地作業系統之間，建立不可逾越的實體執行期安全防線。
 
 ---
 
-## 2. 開發者體驗：策略即代碼 (Policy-as-Code via AI)
+## 🛑 為什麼需要 DROS 確定性治理？
+傳統依賴 Prompt Engineering、Llama-Guard 或模型自我審查的「機率型安全」在執行期必定潰敗：
+* **提示注入 (Prompt Injection) 輕易繞過**：黑客只需簡單的混淆或 Jailbreak 即可誘騙 Agent 執行 `rm -rf /` 或外洩敏感金鑰。
+* **無法防範執行期競爭 (TOCTOU) 與延遲**：調用外部審查模型會產生 1~3 秒的巨大延遲，且無法管到作業系統系統呼叫 (Syscall)。
+* **缺乏法律不可否認性**：無法從密碼學上證明 *為什麼* Agent 執行了某項特權操作。
 
-告別複雜繁瑣的 YAML/JSON 手工配置。透過 DROS，企業 CISO 或資安工程師只需以自然語言結合 Markdown 撰寫策略 (`Vajra.md`)。您甚至可以使用 ChatGPT 或 Claude 根據企業資安守則直接生成 `Vajra.md`。
-
-一旦撰寫完成，**DROS Compiler** 會將人類可讀的 Markdown 轉譯為高度最佳化、具備 Ed25519 密碼學簽名的唯讀二進位工件 (`policy.bin`)。
-
----
-
-## 3. DROS 解決方案：確定性作業系統層 (Deterministic OS Layer)
-
-DROS 將安全智慧移至**編譯期 (Compile-Time)**，並在**運行期 (Runtime)** 透過 $\mathcal{O}(1)$ **確定性位元圖譜 (Bitmap)** 進行強制執行。
-
-1.  **DROS Compiler**：撰寫 `Vajra.md` 策略即代碼，編譯為帶簽名的二進位策略檔 (`policy.bin`)。
-2.  **DROS Engine (VajraClaw)**：嵌入式 C-FFI / JNI 核心，透過純位元運算（常數時間 $\mathcal{O}(1)$ 記憶體查表）驗證執行權限。**無 LLM 二次評估、無語意模糊、絕無繞過空間。**
-
-### 鋼性預設拒絕保證 (Strict Fail-Closed)
-DROS 遵循零信任架構運作。一旦 Agent 嘗試發起未經授權的操作、Ed25519 數位簽名不符或策略 Hash 受損，DROS 會直接在 OS 系統呼叫層切斷執行路徑（Panic）。寧可立即中止該進程，也絕不讓未授權的 Payload 接觸企業資料庫。
+**DROS 不是 Prompt 包裝器，而是確定性執行期作業系統 (Deterministic Runtime OS)**：
+將安全智慧移至編譯期 (`demo_policy.yaml` / `Vajra.md`)，並在運行期透過純記憶體常數時間 $\mathcal{O}(1)$ 位元圖譜直接在系統呼叫前**硬性熔斷 (Strict Fail-Closed)**！
 
 ---
 
-## 4. 企業級 AI 六大信任基石模型 (DROS-6P)
+## 🌟 個人版核心權益與特色 (100% 個人永久免費)
 
-DROS-VajraClaw 於 C-ABI / FFI 帶內執行層實時強制執行六大基礎信任邊界：
-
-1. **主體身分 (Principal)**：三層 PKI 簽發之 `DrosIdentityToken (DIT)`，實現不可偽造的 Agent 身分綁定。
-2. **確定性授權 (Authorization)**：不可篡改之 $\mathcal{O}(1)$ 權限位元圖譜，精確將角色映射至執行向量。
-3. **系統呼叫閘門 (Action Bound)**：亞微秒級 (<500ns) 二進位攔截，施加硬性物理邊界。
-4. **動態策略控制 (Policy Gate)**：動態敏感資料遮蔽、人機協同 (HITL) 與 ZKP-Lite 零知識證明。
-5. **不可篡改審計 (Audit Log)**：SHA-256 Merkle Hash 鏈結 ＋ Ed25519 簽名，完全符合歐盟 AI 法案 (EU AI Act) 第 12 條規範。
-6. **微秒級撤銷 (Expiry/Revocation)**：常數時間 $\mathcal{O}(1)$ 動態位元圖譜更新，實現微秒級權限撤銷與即時 HTTP 403 阻斷。
+* 🛡️ **守護最多 5 個並發 Agent**：在單台個人開發機上，同時為多個不同平台的活躍 Agent 提供帶內執行期防護。
+* 🔑 **原生 W3C `did:key` 與 RFC-010 護照**：基於 Ed25519 數位簽章的密碼學身分綁定，杜絕跨進程偽造。
+* ⚡ **微秒級帶內硬熔斷 (<1μs)**：確定性 $\mathcal{O}(1)$ AST 策略查表，在惡意系統呼叫發起瞬間物理阻斷。
+* 📜 **SHA-256 Merkle 雜湊鏈審計記錄**：具備不可否認性的本地執行軌跡與重啟回讀機制，防範任何日誌竄改。
+* 🌐 **通用跨 Agent 相容性**：提供原生 REST 與 MCP 介面，全面支援 AGY、Codex、Claude Code、Cursor 與 DSH。
 
 ---
 
-## 📜 相關技術核心論文與實測驗證 (Technical Foundations & Benchmarks)
-若您在學術研究、技術白皮書或企業架構評估中引用 DROS 執行期治理技術，歡迎引用我們已公開於 Zenodo 的三部曲權威論文：
+## 📊 治理與防禦能力對照矩陣 (Defense Matrix)
 
-* 📖 **[DROS 學術三部曲導讀 (Reading Guide Technical Note)](https://doi.org/10.5281/zenodo.22114036)**：*面向自主 AI 工作負載的確定性執行期作業基板*（Zenodo: [10.5281/zenodo.22114036](https://zenodo.org/records/22114036)）
-* 🏛️ **Paper 1: DROS-6P** — *閉環企業級 AI Agent 六大信任邊界之確定性執行期治理架構*（DOI: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970)）
-* 🏛️ **Paper 2: DROS 四層 (v3)** — *彌合自主 AI 負載中「代理人至執行歸因鴻溝」之四層確定性執行期作業系統*（DOI: [`10.5281/zenodo.22092008`](https://doi.org/10.5281/zenodo.22092008)）
-* 🏛️ **Paper 3: DROS-PGM** — *基於內核級運行期安全之確定性執行控制平面 (Post-Compromise)*（DOI: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687)）
-
----
-
-## 🚀 多場景整合與部署指南 (Multi-Scenario Guide)
-
-### 🌟 情境 A：DSH (DeepSeek Harness) 沙盒使用者
-1. **一鍵啟動 DROS Docker 網關**：
-   ```bash
-   docker run -d -p 8080:8080 --name dros-gateway dros/hacker-gateway:v1.0.0
-   ```
-2. **在 DSH 中安裝社區外掛**：
-   ```bash
-   dsh plugin --profile web add dsh-plugin-dros
-   ```
-3. **享受即時微秒級防禦**：DSH 內的 Agent 工具調用將立即由 DROS 執行期微核心進行確定性防護與審計。
+| 威脅向量與防護維度 | 傳統 LLM 語意審查 (Guardrails) | 📦 DSH 純 TS 外掛單機版 | ⚡ DROS Hacker Docker 網關版 (本倉) | 🏢 企業版 (Enterprise / Mesh) |
+| :--- | :---: | :---: | :---: | :---: |
+| **運行載體與依賴** | 雲端 API / 外部模型 | 純 JS 進程內 (零外部依賴) | **本地 Docker 容器 (`:8080`)** | 企業集群 / K8s / C-ABI 微核心 |
+| **守護 Agent 範圍** | 單一對話 Session | 專屬保護 DSH 本地進程 | **跨平台聯防 (AGY+Codex+Claude+Cursor+DSH)** | 全企業數千節點 / 私有雲 |
+| **防 Prompt 詐騙刪庫** | ❌ 易被 Jailbreak 繞過 | 🟢 **100% 正則安全閥攔截** | 🟢 **100% 確定性 AST 熔斷 (<1μs)** | 🟢 **AST 點陣查表 + eBPF 內核硬攔截** |
+| **憑證與私鑰防外洩** | ❌ 無法實體隔離 | 🟢 **敏感路徑讀取攔截** | 🟢 **動態 PII 遮蔽 + 虛擬檔案沙盒** | 🟢 **硬體 HSM 綁定 + ZKP-Lite 證明** |
+| **Agent 主體身分** | ❌ 無密碼學身分 | 🟡 Session 級識別碼 | 🟢 **原生 W3C `did:key` (Ed25519)** | 🟢 **3-Tier PKI `DrosIdentityToken (DIT)`** |
+| **不可否認審計鏈** | ❌ 明文日誌易被竄改 | 🟢 **本地 SHA-256 雜湊鏈** | 🟢 **Ed25519 簽名 Merkle 雜湊鏈** | 🟢 **歐盟 AI 法案第 12 條法院級存證** |
+| **RFC-010 護照** | ❌ 不支援 | 🟡 標準格式解析 | 🟢 **本地簽發與跨 Agent 交互認證** | 🟢 **分散式跨組織護照漫遊檢驗** |
+| **執行期判定延遲** | 🔴 1,000 ~ 3,000 ms | 🟢 **<1 ms (記憶體直接攔截)** | 🟢 **<1 ms (Loopback HTTP / C-ABI)** | 🟢 **<500 ns (極致 C-ABI 記憶體查表)** |
+| **授權方案** | 按 Token / 訂閱計費 | **完全免費 (Apache-2.0 開源)** | **個人 Hacker 永久免費授權** | Startup $2,990 / Enterprise $29,990 |
 
 ---
 
-### 💻 情境 B：Antigravity 2.0 / Codex / Cursor 開發者 (MCP 協議)
-在您的 `mcp_settings.json` 或 Claude Desktop 配置中加入 DROS 網關：
+## 🚀 極速上手指南 (Quick Start)
+
+### 方式一：直接運行預先建置之 Docker 容器 (推薦)
+無需手動編譯，直接拉取並啟動：
+```bash
+# 1. 一鍵啟動 DROS Hacker 網關 (免授權碼，開箱即用)
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/FreeTrial-Sandbox/demo_policy.yaml:/app/demo_policy.yaml \
+  dros/hacker-gateway:v1.0.0
+
+# 2. 檢驗網關健康狀態
+curl http://localhost:8080/health
+```
+
+### 方式二：從原始碼建置並啟動
+```bash
+git clone https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker.git
+cd DROS-VajraClaw-Hacker
+docker compose -f docker/docker-compose.yml up -d
+```
+
+---
+
+## 🔌 跨平台多 Agent 快速接入指引
+
+### 1. Google Antigravity 2.0 / Claude Desktop / Cursor (MCP 模式)
+在您的 `mcp_settings.json` 或 Claude 擴充配置中加入 DROS 網關：
 ```json
 {
   "mcpServers": {
@@ -89,9 +88,21 @@ DROS-VajraClaw 於 C-ABI / FFI 帶內執行層實時強制執行六大基礎信�
 }
 ```
 
----
+### 2. DeepSeek Harness (DSH)
+在 DSH 中安裝官方安全外掛，並指向 Docker 網關：
+```bash
+dsh plugin --profile web add dsh-plugin-vajraclaw
+```
+*(在 DSH 設定介面將 `gatewayUrl` 填入 `http://localhost:8080`，即可解鎖 W3C DID 與完整網關治理能力)*
 
-### 🐍 情境 C：原生 Python / LangChain / AutoGen 開發者
+### 3. OpenAI Codex / Claude Code / Python SDK
+在您的開發環境中設定環境變數：
+```bash
+export DROS_GATEWAY_URL="http://localhost:8080"
+export DROS_IDENTITY_SEED="0x1a2b3c4d5e6f..." # 您的本機 Ed25519 種子
+```
+
+在 Python 代碼中直接調用：
 ```python
 from integrations.vajraclaw.runtime import VajraClaw
 
@@ -103,22 +114,33 @@ if not decision:
 
 ---
 
-## 📜 技術白皮書與 Zenodo 權威學術引用
+## 📜 學術三部曲論文與權威引用 (Technical Foundations & Academic Citations)
 
-### 📚 Zenodo 官方同行評審論文
-* 🏛️ **DROS 4-Layer Defense-in-Depth Architecture for Autonomous AI Workloads**
-  * **DOI**: [`10.5281/zenodo.21755654`](https://doi.org/10.5281/zenodo.21755654)
-* 🏛️ **DROS-6P: A Unified Deterministic Runtime Governance Architecture**
-  * **DOI**: [`10.5281/zenodo.21808499`](https://doi.org/10.5281/zenodo.21808499)
+若您在學術論文、產業報告或開源研究中引用 DROS 執行期確定性治理架構，請引用我們已公開於 Zenodo 的權威論文三部曲：
 
-### 📖 完整技術白皮書
-* 📖 **[完整技術白皮書 (繁體中文 v2.5)](docs/DROS_AgenticWeb_Defense_Whitepaper_CN.md)**：*自主型 AI 工作負載的零信任執行治理*
-* 📖 **[Full Whitepaper (English v2.5)](docs/DROS_AgenticWeb_Defense_Whitepaper_EN.md)**
-* 🏛️ **[先前技術防禦宣告 (Defensive Publication)](docs/DEFENSIVE_PUBLICATION.md)**
+* 📖 **[DROS 學術三部曲導讀 (Reading Guide Technical Note)](https://doi.org/10.5281/zenodo.22114036)**: *An Agent Runtime Operation Substrate: Technical Foundations, Reading Guide, and Roadmap for the DROS Paper Trilogy*（Zenodo: [`10.5281/zenodo.22114036`](https://doi.org/10.5281/zenodo.22114036)）
+* 🏛️ **Paper 1: DROS-6P** — *A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*（DOI: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970)）
+* 🏛️ **Paper 2: DROS 4-Layer (v3)** — *Bridging the Agent-to-Execution Attribution Gap in Autonomous AI Workloads: A 4-Layer Deterministic Runtime Operating System*（DOI: [`10.5281/zenodo.22092008`](https://doi.org/10.5281/zenodo.22092008)）
+* 🏛️ **Paper 3: DROS-PGM** — *A Deterministic Kernel-Level Execution Control Plane for Post-Compromise Security in Autonomous AI Systems*（DOI: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687)）
 
 ---
 
-> **“Linux 定義了機器如何運行軟體，而 DROS 定義了 AI Agent 被允許如何行動。”**
+## ⚠️ 使用注意事項與安全性約定
+
+1. **預設拒絕原則 (Fail-Closed)**：
+   * 當 Docker 網關啟用時，所有未在 `demo_policy.yaml` 明確宣告為 `ALLOW` 的高危工具呼叫將預設被硬性阻斷。
+2. **零特權原則 (Least Privilege)**：
+   * 宿主 AI Agent 嚴禁被賦予對 `policy.bin` 或 `demo_policy.yaml` 的寫入權限；在正式部署時策略檔必須以唯讀 (Read-Only) 模式掛載。
+3. **授權碼選填說明**：
+   * 本 Hacker 版預設以 Community 模式直接運行（支援 2 個並發 Agent）；若需解鎖 5 個並發 Agent，可於啟動時帶入 `-e DROS_LICENSE_KEY="your-key"` 或由 DSH 介面填入。
 
 ---
-*專利聲明：DROS 執行治理與安全技術已申請美國臨時專利保護（U.S. Provisional Patent Application No. 64/111,973，Patent Pending）。*
+
+## ⚖️ 授權與智慧財產權憲法聲明 (License & IP Constitution)
+
+* **個人與社群使用 (Free for Individuals)**：
+  * 本軟體授予個人開發者永久免費非商業使用權（Free License for Individuals），允許在單一主機上治理最多 5 個並發 AI Agent。源代碼與專利技術由 Top-Celestial 專有保留，嚴禁未經授權之二次分發、轉售或逆向工程。
+* **企業商用部署 (Commercial Licensing)**：
+  * 任何企業法人、受薪雇員商用或正式生產環境實施，嚴格需要商業授權（Startup / Enterprise / Sovereign）。商業授權請洽 [service@dr-os.io](mailto:service@dr-os.io) 或造訪 [https://dr-os.io](https://dr-os.io)。
+* **專利保護聲明 (Patent Notice)**：
+  * DROS 確定性執行治理與帶內微秒級熔斷技術已申請美國臨時專利保護（**U.S. Provisional Patent Application No. 64/111,973，Patent Pending**）。所有商業部署與實施權益由 康宸園有限公司 (Top-Celestial Company Ltd.) 專有保留。
