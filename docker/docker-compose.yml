@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  dros-gateway:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: dros/hacker-gateway:v1.0.0
+    container_name: dros-hacker-gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DROS_POLICY_PATH=/app/demo_policy.yaml
+      - DROS_LICENSE_KEY=${DROS_LICENSE_KEY:-}
+    volumes:
+      - ../rules:/app/rules:ro
+      - ../logs:/app/logs:rw

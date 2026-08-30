@@ -1,0 +1,13 @@
+
+epoch: "v2-stable"
+tool_policies:
+  - name: "file.read"
+    effect: "allow"
+  - name: "db.read"
+    effect: "allow"
+  - name: "execute_payment"
+    effect: "allow"
+    conditions:
+      - field: "amount"
+        operator: "<="
+        value: 1000
