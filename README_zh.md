@@ -114,16 +114,26 @@ if not decision:
 
 ---
 
-## 📜 學術三部曲論文與權威引用 (Technical Foundations & Academic Citations)
+## 📜 相關技術核心論文與實測驗證 (Technical Foundations & Benchmarks)
 
-若您在學術論文、產業報告或開源研究中引用 DROS 執行期確定性治理架構，請引用我們已公開於 Zenodo 的權威論文三部曲：
+本專案之確定性執行治理、微秒級熔斷與密碼學存證機制，參考並延伸自以下核心技術論文與開源實測環境：
 
-* 📖 **[DROS 學術三部曲導讀 (Reading Guide Technical Note)](https://doi.org/10.5281/zenodo.22114036)**: *An Agent Runtime Operation Substrate: Technical Foundations, Reading Guide, and Roadmap for the DROS Paper Trilogy*（Zenodo: [`10.5281/zenodo.22114036`](https://doi.org/10.5281/zenodo.22114036)）
-* 🏛️ **Paper 1: DROS-6P** — *A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*（DOI: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970)）
-* 🏛️ **Paper 2: DROS 4-Layer (v3)** — *Bridging the Agent-to-Execution Attribution Gap in Autonomous AI Workloads: A 4-Layer Deterministic Runtime Operating System*（DOI: [`10.5281/zenodo.22092008`](https://doi.org/10.5281/zenodo.22092008)）
-* 🏛️ **Paper 3: DROS-PGM** — *A Deterministic Kernel-Level Execution Control Plane for Post-Compromise Security in Autonomous AI Systems*（DOI: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687)）
+1. **核心架構與六大信任邊界 (Core Architecture)**:
+   * **論文**: *DROS-6P: A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*
+   * **Zenodo DOI**: [10.5281/zenodo.21833970](https://doi.org/10.5281/zenodo.21833970) | **記錄典藏**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
 
----
+2. **四層深度防禦架構 (Defense-in-Depth Model)**:
+   * **論文**: *DROS 4-Layer Defense-in-Depth Architecture for Autonomous AI Workloads*
+   * **Zenodo DOI**: [10.5281/zenodo.21903475](https://doi.org/10.5281/zenodo.21903475) | **記錄典藏**: [zenodo.org/records/21903475](https://zenodo.org/records/21903475)
+
+3. **外掛 FFI 與不可否認存證模組 (Runtime Attribution Framework)**:
+   * **論文**: *Runtime Attribution Framework: An External C-ABI and PKI-Based Zero-Trust Infrastructure for Non-Repudiable Execution Governance in Multi-Agent Systems*
+   * **Zenodo DOI**: [10.5281/zenodo.21903687](https://doi.org/10.5281/zenodo.21903687) | **記錄典藏**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
+
+4. **開源技術標準與實測基準倉 (Open Standard & Verification Sandbox)**:
+   * **RFC-010 規範**: 遵循開放 Agent 身分與存證規範（W3C DID did:key 與 Ed25519 簽章鏈）。
+   * **實測基準環境**: [DROS-VEP Lite (可復現安全評測沙盒)](https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite)
+   * **實測報告**: 涵蓋 24 小時長效多場景測試數據（160,611 次請求驗證，決策延遲 26.1μs）。
 
 ## ⚠️ 使用注意事項與安全性約定
 
