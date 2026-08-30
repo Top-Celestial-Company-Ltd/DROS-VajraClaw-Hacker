@@ -1,5 +1,5 @@
 # ⚡ DROS™ VajraClaw (Hacker Edition 個人免費版)
-### 專為個人開發者打造的獨立 Docker 執行期治理網關 (支援 W3C DID、<1μs 微秒級熔斷與多 Agent 聯防)
+### 專為個人開發者打造的獨立 Docker 執行期治理網關 (支援 W3C DID、<1μs 微秒級熔斷與多 Agent 全生態聯防)
 
 [![官方網站](https://img.shields.io/badge/官方網站-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
 [![Docker Ready](https://img.shields.io/badge/Docker-Ready-blue.svg)](#)
@@ -9,7 +9,7 @@
 
 [English](README.md) | [繁體中文說明](README_zh.md) | [🌐 官方網站](https://dr-os.io)
 
-**DROS VajraClaw Hacker Edition** 是官方專為個人開發者、研究人員及獨立工作站打造的**永久免費獨立 Docker 治理網關 (Free License for Individuals)**。它在自主 AI Agent（Google Antigravity、OpenAI Codex、Claude Code、Cursor、DeepSeek Harness）與您的本地作業系統之間，建立不可逾越的實體執行期安全防線。
+**DROS VajraClaw Hacker Edition** 是官方專為個人開發者、研究人員及獨立工作站打造的**永久免費獨立 Docker 治理網關 (Free License for Individuals)**。它在自主 AI Agent（Google Antigravity、Anthropic Claude、OpenAI Codex、Cursor、CrewAI、AutoGen、DeepSeek Harness）與您的本機作業系統之間，建立不可逾越的實體執行期安全防線。
 
 ---
 
@@ -30,7 +30,7 @@
 * 🔑 **原生 W3C `did:key` 與 RFC-010 護照**：基於 Ed25519 數位簽章的密碼學身分綁定，杜絕跨進程偽造。
 * ⚡ **微秒級帶內硬熔斷 (<1μs)**：確定性 $\mathcal{O}(1)$ AST 策略查表，在惡意系統呼叫發起瞬間物理阻斷。
 * 📜 **SHA-256 Merkle 雜湊鏈審計記錄**：具備不可否認性的本地執行軌跡與重啟回讀機制，防範任何日誌竄改。
-* 🌐 **通用跨 Agent 相容性**：提供原生 REST 與 MCP 介面，全面支援 AGY、Codex、Claude Code、Cursor 與 DSH。
+* 🌐 **通用跨 Agent 全生態相容**：提供原生 REST 與 MCP 介面，全面支援 AGY、Claude、Codex、Cursor、LangChain、CrewAI 與 DSH。
 
 ---
 
@@ -39,7 +39,7 @@
 | 威脅向量與防護維度 | 傳統 LLM 語意審查 (Guardrails) | 📦 DSH 純 TS 外掛單機版 | ⚡ DROS Hacker Docker 網關版 (本倉) | 🏢 企業版 (Enterprise / Mesh) |
 | :--- | :---: | :---: | :---: | :---: |
 | **運行載體與依賴** | 雲端 API / 外部模型 | 純 JS 進程內 (零外部依賴) | **本地 Docker 容器 (`:8080`)** | 企業集群 / K8s / C-ABI 微核心 |
-| **守護 Agent 範圍** | 單一對話 Session | 專屬保護 DSH 本地進程 | **跨平台聯防 (AGY+Codex+Claude+Cursor+DSH)** | 全企業數千節點 / 私有雲 |
+| **守護 Agent 範圍** | 單一對話 Session | 專屬保護 DSH 本地進程 | **跨平台全生態 (Claude+Codex+Cursor+DSH+AGY)** | 全企業數千節點 / 私有雲 |
 | **防 Prompt 詐騙刪庫** | ❌ 易被 Jailbreak 繞過 | 🟢 **100% 正則安全閥攔截** | 🟢 **100% 確定性 AST 熔斷 (<1μs)** | 🟢 **AST 點陣查表 + eBPF 內核硬攔截** |
 | **憑證與私鑰防外洩** | ❌ 無法實體隔離 | 🟢 **敏感路徑讀取攔截** | 🟢 **動態 PII 遮蔽 + 虛擬檔案沙盒** | 🟢 **硬體 HSM 綁定 + ZKP-Lite 證明** |
 | **Agent 主體身分** | ❌ 無密碼學身分 | 🟡 Session 級識別碼 | 🟢 **原生 W3C `did:key` (Ed25519)** | 🟢 **3-Tier PKI `DrosIdentityToken (DIT)`** |
@@ -73,14 +73,17 @@ docker compose -f docker/docker-compose.yml up -d
 
 ---
 
-## 🔌 跨平台多 Agent 快速接入指引
+## 🔌 5 大主流 Agent 生態系全情境快速接入指引 (Ecosystem Integrations)
 
-### 1. Google Antigravity 2.0 / Claude Desktop / Cursor (MCP 模式)
-在您的 `mcp_settings.json` 或 Claude 擴充配置中加入 DROS 網關：
+詳細範例代碼請參考目錄 [`examples/`](examples/)：
+
+### 1. 🤖 Anthropic Claude Desktop & Claude Code (MCP 協議)
+完整設定檔請見 [`examples/claude_mcp/`](examples/claude_mcp/)：
+在您的 `claude_desktop_config.json` 或 `mcp_settings.json` 加入：
 ```json
 {
   "mcpServers": {
-    "dros-governance": {
+    "dros-vajraclaw": {
       "url": "http://localhost:8080/mcp",
       "transport": "http"
     }
@@ -88,21 +91,12 @@ docker compose -f docker/docker-compose.yml up -d
 }
 ```
 
-### 2. DeepSeek Harness (DSH)
-在 DSH 中安裝官方安全外掛，並指向 Docker 網關：
-```bash
-dsh plugin --profile web add dsh-plugin-vajraclaw
-```
-*(在 DSH 設定介面將 `gatewayUrl` 填入 `http://localhost:8080`，即可解鎖 W3C DID 與完整網關治理能力)*
+### 2. 💻 Cursor IDE / VS Code Agent (終端安全守護)
+完整規範請見 [`examples/cursor_rules/`](examples/cursor_rules/)：
+在專案根目錄建立 `.cursorrules`，將終端危險命令檢查導向 `http://localhost:8080/evaluate`，在 AI 嘗試執行刪庫或匯出機密時在 1 微秒內硬性拒絕！
 
-### 3. OpenAI Codex / Claude Code / Python SDK
-在您的開發環境中設定環境變數：
-```bash
-export DROS_GATEWAY_URL="http://localhost:8080"
-export DROS_IDENTITY_SEED="0x1a2b3c4d5e6f..." # 您的本機 Ed25519 種子
-```
-
-在 Python 代碼中直接調用：
+### 3. 🐍 OpenAI SDK / LangChain / LlamaIndex (3行代碼封裝)
+完整範例請見 [`examples/openai_langchain/`](examples/openai_langchain/)：
 ```python
 from integrations.vajraclaw.runtime import VajraClaw
 
@@ -112,6 +106,17 @@ if not decision:
     raise PermissionError(f"Blocked by DROS: {decision.reason}")
 ```
 
+### 4. 👥 CrewAI & Microsoft AutoGen (多 Agent 蜂群角色治理)
+完整範例請見 [`examples/crewai_autogen/`](examples/crewai_autogen/)：
+為群體智能中的每個 Agent（如 Legal、Dev、Auditor）指派獨立 W3C DID，依角色隔離系統呼叫權限。
+
+### 5. 📦 DeepSeek Harness (DSH 外掛聯防)
+完整範例請見 [`examples/dsh_plugin/`](examples/dsh_plugin/)：
+```bash
+dsh plugin --profile web add dsh-plugin-vajraclaw
+```
+*(在 DSH 設定介面將 `gatewayUrl` 填入 `http://localhost:8080`，即可解鎖 W3C DID 與完整網關治理能力)*
+
 ---
 
 ## 📜 相關技術核心論文與實測驗證 (Technical Foundations & Benchmarks)
@@ -120,20 +125,22 @@ if not decision:
 
 1. **核心架構與六大信任邊界 (Core Architecture)**:
    * **論文**: *DROS-6P: A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*
-   * **Zenodo DOI**: [10.5281/zenodo.21833970](https://doi.org/10.5281/zenodo.21833970) | **記錄典藏**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
+   * **Zenodo DOI**: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970) | **記錄典藏**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
 
 2. **四層深度防禦架構 (Defense-in-Depth Model)**:
    * **論文**: *DROS 4-Layer Defense-in-Depth Architecture for Autonomous AI Workloads*
-   * **Zenodo DOI**: [10.5281/zenodo.21903475](https://doi.org/10.5281/zenodo.21903475) | **記錄典藏**: [zenodo.org/records/21903475](https://zenodo.org/records/21903475)
+   * **Zenodo DOI**: [`10.5281/zenodo.21903475`](https://doi.org/10.5281/zenodo.21903475) | **記錄典藏**: [zenodo.org/records/21903475](https://zenodo.org/records/21903475)
 
 3. **外掛 FFI 與不可否認存證模組 (Runtime Attribution Framework)**:
    * **論文**: *Runtime Attribution Framework: An External C-ABI and PKI-Based Zero-Trust Infrastructure for Non-Repudiable Execution Governance in Multi-Agent Systems*
-   * **Zenodo DOI**: [10.5281/zenodo.21903687](https://doi.org/10.5281/zenodo.21903687) | **記錄典藏**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
+   * **Zenodo DOI**: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687) | **記錄典藏**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
 
 4. **開源技術標準與實測基準倉 (Open Standard & Verification Sandbox)**:
-   * **RFC-010 規範**: 遵循開放 Agent 身分與存證規範（W3C DID did:key 與 Ed25519 簽章鏈）。
+   * **RFC-010 規範**: 遵循開放 Agent 身分與存證規範（W3C DID `did:key` 與 Ed25519 簽章鏈）。
    * **實測基準環境**: [DROS-VEP Lite (可復現安全評測沙盒)](https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite)
    * **實測報告**: 涵蓋 24 小時長效多場景測試數據（160,611 次請求驗證，決策延遲 26.1μs）。
+
+---
 
 ## ⚠️ 使用注意事項與安全性約定
 

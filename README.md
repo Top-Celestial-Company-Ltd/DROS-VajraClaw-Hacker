@@ -1,5 +1,5 @@
 # ⚡ DROS™ VajraClaw (Hacker Edition)
-### Free Standalone Docker Governance Gateway for Individual Multi-Agent Workstations (W3C DID & <1μs Enforcement)
+### Free Standalone Docker Governance Gateway for Multi-Agent Ecosystems (W3C DID & <1μs Fusing)
 
 [![Official Website](https://img.shields.io/badge/Official_Website-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
 [![Docker Ready](https://img.shields.io/badge/Docker-Ready-blue.svg)](#)
@@ -9,7 +9,7 @@
 
 [English](README.md) | [繁體中文說明](README_zh.md) | [🌐 Official Website](https://dr-os.io)
 
-**DROS VajraClaw Hacker Edition** is the official standalone, free Docker governance gateway designed for individual developers, AI researchers, and local developer workstations. It physicalizes execution security between autonomous AI Agents (Google Antigravity, OpenAI Codex, Claude Code, Cursor, DeepSeek Harness) and your local operating system.
+**DROS VajraClaw Hacker Edition** is the official standalone, free Docker governance gateway designed for individual developers, AI researchers, and local developer workstations. It physicalizes execution security between autonomous AI Agents (Google Antigravity, Anthropic Claude, OpenAI Codex, Cursor, CrewAI, AutoGen, DeepSeek Harness) and your local operating system.
 
 ---
 
@@ -30,7 +30,7 @@ It moves intelligence to compile-time (`demo_policy.yaml` / `Vajra.md`) and enfo
 * 🔑 **Native W3C `did:key` & RFC-010 Passports**: Cryptographic agent identity binding with Ed25519 signatures.
 * ⚡ **Microsecond In-Band Fusing (<1μs)**: Deterministic $\mathcal{O}(1)$ AST policy lookup that severs unauthorized syscalls before execution.
 * 📜 **SHA-256 Merkle Hash-Linked Audit Chain**: Non-repudiable local execution logs with startup recovery to prevent log tampering.
-* 🌐 **Universal Agent Compatibility**: Native REST and MCP endpoints compatible with AGY, Codex, Claude Code, Cursor, and DSH.
+* 🌐 **Universal Cross-Ecosystem Compatibility**: Native REST and MCP endpoints compatible with AGY, Claude, Codex, Cursor, LangChain, CrewAI, and DSH.
 
 ---
 
@@ -39,7 +39,7 @@ It moves intelligence to compile-time (`demo_policy.yaml` / `Vajra.md`) and enfo
 | Threat Vector / Capability | Traditional LLM Guardrails | 📦 DSH Standalone TS Plugin | ⚡ DROS Hacker Docker Gateway (This Repo) | 🏢 Enterprise / Mesh Tier |
 | :--- | :---: | :---: | :---: | :---: |
 | **Runtime Vehicle** | Cloud API / External Model | In-Process JS (Zero Deps) | **Local Docker Container (`:8080`)** | Enterprise Cluster / K8s / C-ABI |
-| **Protected Scope** | Single Chat Session | DSH Local Process | **Cross-Platform (AGY+Codex+Claude+Cursor+DSH)** | Multi-Node Fleet / Private Cloud |
+| **Protected Scope** | Single Chat Session | DSH Local Process | **Full Ecosystem (Claude+Codex+Cursor+DSH+AGY)** | Multi-Node Fleet / Private Cloud |
 | **Destructive Command Blocking** | ❌ Vulnerable | 🟢 **100% Regex Failsafe** | 🟢 **100% Deterministic AST Fusing (<1μs)** | 🟢 **AST Bitmaps + eBPF Kernel Hooks** |
 | **Credential & Secret Protection** | ❌ No Physical Guard | 🟢 **Sensitive Path Block** | 🟢 **Dynamic PII Redaction + Virtual Sandboxing**| 🟢 **Hardware HSM + ZKP-Lite Proofs** |
 | **Agent Identity Binding** | ❌ No Identity | 🟡 Session-level ID | 🟢 **Native W3C `did:key` (Ed25519)** | 🟢 **3-Tier PKI `DrosIdentityToken (DIT)`** |
@@ -72,14 +72,17 @@ docker compose -f docker/docker-compose.yml up -d
 
 ---
 
-## 🔌 Connecting Your Multi-Agent Workstation
+## 🔌 5 Major Agent Ecosystem Integration Guides
 
-### 1. Google Antigravity 2.0 / Claude Desktop / Cursor (MCP Mode)
-Add to your `mcp_settings.json`:
+See [`examples/`](examples/) for working starter templates:
+
+### 1. 🤖 Anthropic Claude Desktop & Claude Code (MCP Protocol)
+See [`examples/claude_mcp/`](examples/claude_mcp/):
+Add to your `claude_desktop_config.json` or `mcp_settings.json`:
 ```json
 {
   "mcpServers": {
-    "dros-governance": {
+    "dros-vajraclaw": {
       "url": "http://localhost:8080/mcp",
       "transport": "http"
     }
@@ -87,20 +90,12 @@ Add to your `mcp_settings.json`:
 }
 ```
 
-### 2. DeepSeek Harness (DSH)
-Install the official failsafe plugin:
-```bash
-dsh plugin --profile web add dsh-plugin-vajraclaw
-```
-*(In DSH settings, set `gatewayUrl` to `http://localhost:8080` to activate W3C DID & full Docker gateway governance)*
+### 2. 💻 Cursor IDE / VS Code Agents (Terminal Protection)
+See [`examples/cursor_rules/`](examples/cursor_rules/):
+Place `.cursorrules` in your project root to intercept high-risk terminal commands via `http://localhost:8080/evaluate` in <1μs before OS execution!
 
-### 3. OpenAI Codex / Claude Code / Python SDK
-```bash
-export DROS_GATEWAY_URL="http://localhost:8080"
-export DROS_IDENTITY_SEED="0x1a2b3c4d5e6f..." # Local Ed25519 Seed Hex
-```
-
-In Python:
+### 3. 🐍 OpenAI SDK & LangChain (3-Line Tool Wrapping)
+See [`examples/openai_langchain/`](examples/openai_langchain/):
 ```python
 from integrations.vajraclaw.runtime import VajraClaw
 
@@ -110,6 +105,17 @@ if not decision:
     raise PermissionError(f"Blocked by DROS: {decision.reason}")
 ```
 
+### 4. 👥 CrewAI & Microsoft AutoGen (Multi-Agent Swarm Governance)
+See [`examples/crewai_autogen/`](examples/crewai_autogen/):
+Assign individual W3C DIDs to different agent roles (Legal, Dev, Auditor) and enforce fine-grained capability bitmaps across agent swarms.
+
+### 5. 📦 DeepSeek Harness (DSH Dual-Mode Plugin)
+See [`examples/dsh_plugin/`](examples/dsh_plugin/):
+```bash
+dsh plugin --profile web add dsh-plugin-vajraclaw
+```
+*(Set `gatewayUrl` to `http://localhost:8080` in DSH to activate W3C DID & full Docker gateway governance)*
+
 ---
 
 ## 📜 Technical Foundations & Benchmark Publications
@@ -118,20 +124,22 @@ The deterministic execution governance, microsecond fusing, and cryptographic au
 
 1. **Core Architecture & Six Trust Boundaries (Core Architecture)**:
    * **Paper**: *DROS-6P: A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*
-   * **Zenodo DOI**: [10.5281/zenodo.21833970](https://doi.org/10.5281/zenodo.21833970) | **Archived Record**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
+   * **Zenodo DOI**: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970) | **Archived Record**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
 
 2. **Defense-in-Depth Model (4-Layer Security)**:
    * **Paper**: *DROS 4-Layer Defense-in-Depth Architecture for Autonomous AI Workloads*
-   * **Zenodo DOI**: [10.5281/zenodo.21903475](https://doi.org/10.5281/zenodo.21903475) | **Archived Record**: [zenodo.org/records/21903475](https://zenodo.org/records/21903475)
+   * **Zenodo DOI**: [`10.5281/zenodo.21903475`](https://doi.org/10.5281/zenodo.21903475) | **Archived Record**: [zenodo.org/records/21903475](https://zenodo.org/records/21903475)
 
 3. **Runtime Attribution & C-ABI Module (Attribution Framework)**:
    * **Paper**: *Runtime Attribution Framework: An External C-ABI and PKI-Based Zero-Trust Infrastructure for Non-Repudiable Execution Governance in Multi-Agent Systems*
-   * **Zenodo DOI**: [10.5281/zenodo.21903687](https://doi.org/10.5281/zenodo.21903687) | **Archived Record**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
+   * **Zenodo DOI**: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687) | **Archived Record**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
 
 4. **Open Standards & Verification Sandbox**:
-   * **RFC-010 Specification**: Adheres to open Agent Identity & Attestation standard (W3C DID did:key & Ed25519 signature chain).
+   * **RFC-010 Specification**: Adheres to open Agent Identity & Attestation standard (W3C DID `did:key` & Ed25519 signature chain).
    * **Verification Sandbox**: [DROS-VEP Lite (Reproducible Evaluation Sandbox)](https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite)
    * **Evaluation Metrics**: 24-hour soak benchmark results (160,611 verified requests, 26.1μs decision latency).
+
+---
 
 ## ⚠️ Important Notices & Operational Security
 
