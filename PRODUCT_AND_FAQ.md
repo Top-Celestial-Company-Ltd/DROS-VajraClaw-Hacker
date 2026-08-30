@@ -1,4 +1,4 @@
-# 🛡️ DROS™ Official Product Catalog, Pricing & Technical FAQ
+# 🛡️ DROS™ Official Product Catalog & Technical FAQ
 ### Enterprise Execution Governance Standard Specification for Agentic AI
 
 [![Official Website](https://img.shields.io/badge/Official_Website-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
@@ -6,7 +6,7 @@
 [![RFC-010 Standard](https://img.shields.io/badge/Standard-RFC--010_Draft-orange.svg)](#)
 [![License: 3-Tier Model](https://img.shields.io/badge/License-Standard_3--Tier_Model-green.svg)](#)
 
-[English Version (PRODUCT_AND_FAQ.md)](PRODUCT_AND_FAQ.md) | [繁體中文說明 (PRODUCT_AND_FAQ_zh.md)](PRODUCT_AND_FAQ_zh.md) | [🌐 Official Website (dr-os.io)](https://dr-os.io)
+[English Version (PRODUCT_AND_FAQ.md)](PRODUCT_AND_FAQ.md) | [繁體中文說明 (PRODUCT_AND_FAQ_zh.md)](PRODUCT_AND_FAQ_zh.md) | [🌐 Official Pricing & Plans (dr-os.io/pricing)](https://dr-os.io/pricing)
 
 ---
 
@@ -34,15 +34,17 @@ DROS-VajraClaw enforces six fundamental trust boundaries in real time at the C-A
 
 ---
 
-## 🔥 3. Product Lines & Commercial Pricing Matrix
+## 🔥 3. Official Product Editions & Scope
 
-| Tier | Pricing | Best For | Licensing & Governance Scope |
+> 💡 *For real-time pricing, seat allocation, and active subscriptions, please refer directly to [dr-os.io/pricing](https://dr-os.io/pricing).*
+
+| Tier | License Model | Best For | Governance Scope & Deliverables |
 | :--- | :--- | :--- | :--- |
-| **DSH Plugin (`dsh-plugin-vajraclaw`)** | **$0 (Apache-2.0 Open Source)** | DSH IDE Users | Pure TypeScript in-process regex failsafe, local JSONL hash chain, upgradeable to Docker gateway |
-| **Hacker Edition (Docker Gateway)** | **$0 (Permanent Free)** | Individual Developers & Researchers | 1 Host, Max 5 Concurrent Agents, W3C DID, <1μs AST Fusing, SHA-256 Merkle Chain |
-| **Startup Edition (Commercial)** | **$2,990 / yr** | AI Startups & SaaS MVPs | 3 Hosts, 10 Concurrent Agents per host (30 Total), Native C-ABI SDKs (`.dll`/`.so`), Multi-Language Bindings |
-| **Enterprise Audit Edition** | **$29,990 / yr** | FinTech, Healthcare & Enterprises | 15 Hosts, 30 Concurrent Agents per host (450 Total), EU AI Act Art. 12 Court-Grade Audit, Hardware HSM, Air-Gapped |
-| **Sovereign Mesh / Source Buyout** | **Custom Quote** | Defense & Sovereign Infrastructure | Full Source Code Buyout (C-ABI/Go/Rust), Centralized IAM Control Plane, K8s Helm, Sub-millisecond Kill-Switch OTA |
+| **DSH Plugin (`dsh-plugin-vajraclaw`)** | **Open Source (Apache-2.0)** | DSH IDE Users | Pure TypeScript in-process regex failsafe, local JSONL hash chain, upgradeable to Docker gateway |
+| **Hacker Edition (Docker Gateway)** | **Free License for Individuals** | Individual Developers & Researchers | Up to 5 Concurrent Agents, W3C DID, <1μs AST Fusing, SHA-256 Merkle Chain |
+| **Startup Edition (Commercial)** | **Commercial Annual Subscription** | AI Startups & SaaS Apps | Multi-Host Deployment, Native C-ABI SDKs (`.dll`/`.so`), Multi-Language Bindings |
+| **Enterprise Audit Edition** | **Enterprise Compliance License** | FinTech, Healthcare & Enterprises | EU AI Act Art. 12 Court-Grade Audit, Hardware HSM, Air-Gapped, Dedicated SLA |
+| **Sovereign Mesh / Source Buyout** | **Custom Sovereign License** | Defense & Sovereign Infrastructure | Full Source Code Buyout (C-ABI/Go/Rust), Centralized IAM Control Plane, K8s Helm Clusters |
 
 ---
 

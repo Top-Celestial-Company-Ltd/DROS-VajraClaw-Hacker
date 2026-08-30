@@ -1,4 +1,4 @@
-# 🛡️ DROS™ 官方商品全覽、定價方案與技術核心 FAQ
+# 🛡️ DROS™ 官方商品全覽與技術核心 FAQ
 ### DROS (Deterministic Runtime Operating System) 企業級執行治理標準規格書
 
 [![官方網站](https://img.shields.io/badge/官方網站-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
@@ -6,7 +6,7 @@
 [![標準協議](https://img.shields.io/badge/RFC--010-Draft-orange.svg)](#)
 [![授權模式](https://img.shields.io/badge/授權-標準三大層級憲法-green.svg)](#)
 
-[English Version (PRODUCT_AND_FAQ.md)](PRODUCT_AND_FAQ.md) | [繁體中文說明 (PRODUCT_AND_FAQ_zh.md)](PRODUCT_AND_FAQ_zh.md) | [🌐 官方網站 (dr-os.io)](https://dr-os.io)
+[English Version (PRODUCT_AND_FAQ.md)](PRODUCT_AND_FAQ.md) | [繁體中文說明 (PRODUCT_AND_FAQ_zh.md)](PRODUCT_AND_FAQ_zh.md) | [🌐 官方定價與方案詳情 (dr-os.io/pricing)](https://dr-os.io/pricing)
 
 ---
 
@@ -34,15 +34,17 @@ DROS-VajraClaw 於 C-ABI / FFI 帶內執行層實時強制執行六大基礎信�
 
 ---
 
-## 🔥 三、 官方全產品線與定價矩陣 (Product Lines & Pricing)
+## 🔥 三、 官方產品方案與授權範疇 (Product Editions)
 
-| 產品版本 | 定價 | 適用對象 | 核心授權與治理範疇 |
+> 💡 *最新即時報價、席位配額與訂閱方案，請以 [dr-os.io/pricing](https://dr-os.io/pricing) 官方網站公告為準。*
+
+| 產品版本 | 授權模式 | 適用對象 | 核心治理能力與交付型態 |
 | :--- | :--- | :--- | :--- |
-| **DSH 外掛版 (`dsh-plugin-vajraclaw`)** | **$0 (Apache-2.0 開源)** | DSH 終端使用者 | 純 TypeScript 進程內正則安全閥、本地 JSONL 雜湊鏈、支援升級 Docker 網關 |
-| **Hacker Edition (Docker 網關)** | **$0 (個人永久免費)** | 個人開發者、研究人員 | 1 台主機、最多 5 並發 Agent、W3C DID 簽章、AST <1μs 硬熔斷、SHA-256 Merkle 鏈 |
-| **Startup Edition (商用起步版)** | **$2,990 / 年** | AI 新創團隊、SaaS MVP | 3 台主機、每台 10 並發 Agent (共30 Agent)、C-ABI 原生庫 (`.dll`/`.so`)、多語言 SDK |
-| **Enterprise Audit (企業審計版)** | **$29,990 / 年** | 金融 (FinTech)、醫療、大型企業 | 15 台主機、每台 30 並發 Agent (共450 Agent)、歐盟 AI 法案第12條法院級存證、硬體 HSM 綁定、私有雲隔離 |
-| **Sovereign Mesh / Source Buyout** | **專案報價 (Custom Quote)** | 國防安全、主權 AI 基建 | 完整 C-ABI / Go / Rust 原始碼買斷、集中式 IAM Control Plane、K8s Helm、全球毫秒級緊急熔斷廣播 |
+| **DSH 外掛版 (`dsh-plugin-vajraclaw`)** | **開源授權 (Apache-2.0)** | DSH 終端使用者 | 純 TypeScript 進程內正則安全閥、本地 JSONL 雜湊鏈、支援升級 Docker 網關 |
+| **Hacker Edition (Docker 網關)** | **個人免費授權 (Free for Individuals)** | 個人開發者、研究人員 | 支援最多 5 並發 Agent、W3C DID 簽章、AST <1μs 硬熔斷、SHA-256 Merkle 鏈 |
+| **Startup Edition (商用起步版)** | **商用年訂閱 (Commercial License)** | AI 新創團隊、SaaS 應用 | 多主機部署、C-ABI 原生庫 (`.dll`/`.so`)、多語言 SDK (Python/Node/Go/Rust) |
+| **Enterprise Audit (企業審計版)** | **企業級合規授權 (Enterprise License)** | 金融 (FinTech)、醫療、大型企業 | 歐盟 AI 法案第12條法院級存證、硬體 HSM 綁定、私有雲隔離、專屬 SLA 支援 |
+| **Sovereign Mesh / Source Buyout** | **主權專案授權 (Custom License)** | 國防安全、主權 AI 基建 | 完整 C-ABI / Go / Rust 原始碼買斷、集中式 IAM Control Plane、K8s Helm 集群 |
 
 ---
 
