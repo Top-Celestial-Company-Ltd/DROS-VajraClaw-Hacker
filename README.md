@@ -118,6 +118,63 @@ dsh plugin --profile web add dsh-plugin-vajraclaw
 
 ---
 
+
+---
+
+## 📝 How to Configure Security Policies (Vajra.md Guide)
+
+DROS supports two straightforward formats: **Intuitive Markdown (`Vajra.md`)** and **Structured YAML (`demo_policy.yaml`)**.
+
+### 1. 📄 Intuitive Markdown Example (`Vajra.md`)
+Declare allowed capabilities and hard security boundaries in plain Markdown:
+
+```markdown
+# 🛡️ DROS Agent Security Policy (Vajra.md)
+
+## 1. Allowed Capabilities
+- Allow reading workspace files (`file_read`)
+- Allow standard queries (`search_web`, `query_db`)
+- Allow safe terminal commands (`git status`, `npm test`, `cargo check`)
+
+## 2. Strict Fail-Closed Boundaries
+- Block all recursive deletion or wiping commands (`rm -rf`, `rmdir /s`, `format`)
+- Block access to credential paths (`.env`, `id_rsa`, `secrets.json`, `.aws/credentials`)
+- Restrict transaction amounts exceeding $1,000 threshold (`amount <= 1000`)
+```
+
+---
+
+### 2. 🤖 Let AI Generate Your Policy in 1 Second! (AI Prompt Template)
+
+You don't need to write policies from scratch! Copy the following universal prompt to ChatGPT, Claude, or Cursor:
+
+> 📋 **Copy this Prompt to any LLM / AI Assistant:**
+> 
+> ```text
+> You are a DROS deterministic security architecture expert. Based on my Agent requirements, generate a standard DROS "Vajra.md" security policy in Markdown.
+> 
+> Agent Details:
+> - Agent Role & Scenario: [e.g., Fullstack Developer / Customer Service / Financial Automation]
+> - Allowed Tools & Operations: [e.g., Read/Write src/, Run tests, Query order database]
+> - Strict Boundaries & Denials: [e.g., Block deletion of root/workspace, Block .env access, Payment limit $500]
+> 
+> Follow the DROS "Default Fail-Closed" whitelist principle and structure the output into:
+> 1. Role & Capability Scope
+> 2. Allowed Capabilities (Whitelist)
+> 3. Security Boundary Constraints (Thresholds & Pattern Failsafes)
+> ```
+
+---
+
+### 3. 🔄 Instant Hot Reloading
+Simply mount your `Vajra.md` when launching the Docker gateway. Policy changes take effect in **<1 microsecond without container restarts**:
+```bash
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/Vajra.md:/app/demo_policy.yaml \
+  dros/hacker-gateway:v1.0.0
+```
+
+
 ## 📜 Technical Foundations & Benchmark Publications
 
 The deterministic execution governance, microsecond fusing, and cryptographic audit mechanisms in this project are referenced from and build upon the following core technical papers and verification environments:

@@ -119,6 +119,63 @@ dsh plugin --profile web add dsh-plugin-vajraclaw
 
 ---
 
+
+---
+
+## 📝 如何設定安全策略？(How to Configure Vajra.md)
+
+DROS 支援兩種極簡設定方式：**人類直覺 Markdown 格式 (`Vajra.md`)** 與 **結構化 YAML 格式 (`demo_policy.yaml`)**。
+
+### 1. 📄 人類直覺寫法範例 (`Vajra.md`)
+只需以白話 Markdown 宣告允許執行的白名單與防禦邊界：
+
+```markdown
+# 🛡️ DROS Agent 安全策略規範 (Vajra.md)
+
+## 1. 允許執行的工具 (Allowed Capabilities)
+- 允許讀取當前工作區檔案 (`file_read`)
+- 允許執行一般查詢 (`search_web`, `query_db`)
+- 允許終端執行唯讀指令 (`git status`, `npm test`, `cargo check`)
+
+## 2. 嚴格禁止的邊界 (Strict Fail-Closed Boundaries)
+- 禁止執行任何遞迴刪除或清空指令 (`rm -rf`, `rmdir /s`, `format`)
+- 禁止存取敏感憑證檔案 (`.env`, `id_rsa`, `secrets.json`, `.aws/credentials`)
+- 禁止單筆交易金額超過 1,000 元 (`amount <= 1000`)
+```
+
+---
+
+### 2. 🤖 讓 AI 幫你一秒生成策略！(AI Prompt Template)
+
+您不需要從零手寫！直接將以下**「萬用提示詞 (Prompt)」**複製給 ChatGPT、Claude 或 Cursor，AI 就會自動產出標準合規的 `Vajra.md`：
+
+> 📋 **複製這段 Prompt 給任何 LLM / Agent：**
+> 
+> ```text
+> 你現在是 DROS 確定性安全架構專家。請根據我的 Agent 角色，為我生成一份標準的 DROS「Vajra.md」安全策略 Markdown 檔案。
+> 
+> 我的 Agent 需求如下：
+> - Agent 角色與場景：【例如：全端工程師 / 客服機器人 / 自動化財務助理】
+> - 允許的工具與操作：【例如：讀寫代碼、執行 npm test、查詢訂單資料庫】
+> - 嚴格禁止的邊界：【例如：禁止刪除根目錄、禁止讀取 .env、單次轉帳上限 500】
+> 
+> 請遵循 DROS「預設拒絕 (Default Fail-Closed)」白名單原則，生成清晰的 Markdown 規則區塊，包含：
+> 1. 角色定義與授權範疇 (Role & Scope)
+> 2. 白名單工具 (Allowed Capabilities)
+> 3. 邊界條件約束 (Thresholds & Security Patterns)
+> ```
+
+---
+
+### 3. 🔄 策略即時熱更新 (Hot Reloading)
+啟動 Docker 網關時，只需將您的 `Vajra.md` 掛載進去，修改存檔後 **1 微秒內即時生效，無需重啟容器**：
+```bash
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/Vajra.md:/app/demo_policy.yaml \
+  dros/hacker-gateway:v1.0.0
+```
+
+
 ## 📜 相關技術核心論文與實測驗證 (Technical Foundations & Benchmarks)
 
 本專案之確定性執行治理、微秒級熔斷與密碼學存證機制，參考並延伸自以下核心技術論文與開源實測環境：
