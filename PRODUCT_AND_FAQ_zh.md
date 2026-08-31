@@ -67,6 +67,20 @@ DROS-VajraClaw 於 C-ABI / FFI 帶內執行層實時強制執行六大基礎信�
 
 ---
 
+
+### Q4：如何設定 `Vajra.md` 安全策略？個人版與企業版在策略防禦上有何本質差異？
+**A：**
+* **極簡設定**：個人開發者只需使用白話 Markdown (`Vajra.md`) 或 YAML 定義允許執行的白名單（Allowed Capabilities）與禁止邊界，亦可使用萬用 AI Prompt 讓 ChatGPT / Claude / Cursor 於 1 秒內自動生成。
+* **個人版防線 (Local / Hacker Edition)**：
+  - **防禦手段**：依賴本地作業系統唯讀檔案鎖（`chmod 444` / `Set-ItemProperty IsReadOnly` / Docker 掛載 `:ro`）與 DROS 帶內微秒級 Syscall 攔截，徹底杜絕失控 AI 篡改自身策略解鎖特權。
+* **企業級方案 (Enterprise / Cluster Defense-in-Depth)**：
+  - **遠端唯讀 Vault / KMS**：策略儲存於獨立的安全配置中心，Agent 本地環境無實體檔案，物理上「看不見、摸不到」。
+  - **多方多簽審批 (Multi-Sig M-of-N)**：任何安全邊界放寬必須經過 SecOps / 系統管理員多方數位簽章授權。
+  - **K8s RBAC + eBPF 內核隔離**：即使 Agent 突破 Pod 容器 root 權限，也無法穿透 Host 內核層。
+  - **硬體 HSM 金鑰隔離與 WORM 存證**：DID 私鑰永不出硬體晶片，日誌同步至一次寫入多次讀取 (WORM) 法院級存證。
+
+---
+
 ## 📜 五、 相關技術核心論文與實測驗證 (Technical Foundations & Benchmarks)
 
 本專案之確定性執行治理、微秒級熔斷與密碼學存證機制，參考並延伸自以下核心技術論文與開源實測環境：

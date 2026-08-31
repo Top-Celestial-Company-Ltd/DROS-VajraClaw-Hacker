@@ -67,6 +67,20 @@ DROS-VajraClaw enforces six fundamental trust boundaries in real time at the C-A
 
 ---
 
+
+### Q4: How do I configure `Vajra.md` policies, and how does Personal Edition compare to Enterprise Edition in defense architecture?
+**A:**
+* **Simple Configuration**: Individual developers can define allowed capabilities and boundary rules using plain Markdown (`Vajra.md`) or YAML, or use our universal AI Prompt to generate compliant rules in 1 second via ChatGPT, Claude, or Cursor.
+* **Personal / Hacker Edition Defense (Local Sandbox)**:
+  - **Mechanisms**: Enforces local OS file-level read-only locks (`chmod 444`, `Set-ItemProperty IsReadOnly`, Docker `:ro`) combined with DROS in-band sub-microsecond Syscall interception to stop hallucinating agents from self-modifying policies to escalate privileges.
+* **Enterprise Edition Defense (Cluster Defense-in-Depth)**:
+  - **Remote Vault / KMS Storage**: Policies are centralized in an external, isolated configuration plane; local agents physically cannot view or access the policy storage.
+  - **Multi-Signature Governance (Multi-Sig M-of-N)**: Boundary relaxations require cryptographic approvals from SecOps and compliance officers.
+  - **K8s RBAC & eBPF Kernel Isolation**: Namespace-level isolation prevents host penetration even if the agent compromises Pod root privileges.
+  - **Hardware HSM Key Isolation & WORM Storage**: W3C DID private keys never leave physical hardware chips, and audit trails are synced to Write-Once-Read-Many (WORM) court-grade legal storage.
+
+---
+
 ## 📜 5. Technical Foundations & Academic Benchmark Publications
 
 The deterministic execution governance, microsecond fusing, and cryptographic audit mechanisms in this project are referenced from and build upon the following core technical papers and verification environments:
