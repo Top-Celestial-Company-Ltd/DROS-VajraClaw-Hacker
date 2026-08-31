@@ -1,5 +1,25 @@
 {
   "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "dros-vajraclaw",
+  "title": "DROS VajraClaw (Hacker Edition)",
+  "description": "Deterministic in-band execution governance gateway and W3C DID security guardrail for AI Agent MCP tool calls.",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker",
+  "website": "https://dr-os.io",
+  "categories": [
+    "security",
+    "governance",
+    "developer-tools",
+    "agents"
+  ],
+  "tags": [
+    "security",
+    "mcp",
+    "guardrail",
+    "deterministic",
+    "w3c-did",
+    "merkle-audit"
+  ],
   "maintainers": [
     "Celestial105",
     "Top-Celestial-Company-Ltd"

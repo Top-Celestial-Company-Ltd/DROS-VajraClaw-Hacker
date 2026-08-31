@@ -1,28 +1,27 @@
 {
-  "$schema": "https://json.schemastore.org/mcp-server.json",
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
   "name": "dros-vajraclaw",
   "title": "DROS VajraClaw (Hacker Edition)",
-  "description": "In-band deterministic runtime security gateway and microsecond execution guardrail for AI Agents. Provides <1μs AST fusing, W3C DID identity binding, and non-repudiable audit logging.",
-  "vendor": "Top-Celestial Company Ltd.",
-  "homepage": "https://dr-os.io",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker"
-  },
-  "license": "Free for Individuals",
-  "keywords": [
+  "description": "Deterministic in-band execution governance gateway and W3C DID security guardrail for AI Agent MCP tool calls.",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker",
+  "website": "https://dr-os.io",
+  "categories": [
     "security",
-    "guardrail",
     "governance",
-    "w3c-did",
-    "fail-closed",
-    "in-band",
-    "mcp"
+    "developer-tools",
+    "agents"
   ],
-  "remotes": [
-    {
-      "transport": "stream",
-      "url": "http://localhost:8080/mcp"
-    }
+  "tags": [
+    "security",
+    "mcp",
+    "guardrail",
+    "deterministic",
+    "w3c-did",
+    "merkle-audit"
+  ],
+  "maintainers": [
+    "Celestial105",
+    "Top-Celestial-Company-Ltd"
   ]
 }
