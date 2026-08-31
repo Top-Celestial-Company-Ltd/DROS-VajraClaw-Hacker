@@ -54,12 +54,17 @@ It moves intelligence to compile-time (`demo_policy.yaml` / `Vajra.md`) and enfo
 
 ### Option 1: Run via Pre-built Docker Container (Recommended)
 ```bash
-# 1. Start DROS Hacker Gateway (No license key required out-of-the-box)
-docker run -d -p 8080:8080 --name dros-gateway \
-  -v $(pwd)/FreeTrial-Sandbox/demo_policy.yaml:/app/demo_policy.yaml \
-  dros/hacker-gateway:v1.0.0
+# Option A: One-Command Clone & Start (Self-Contained & Recommended)
+git clone https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker.git
+cd DROS-VajraClaw-Hacker
+docker compose -f docker/docker-compose.yml up -d
 
-# 2. Verify health status
+# Option B: Run via GitHub Container Registry (GHCR)
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/demo_policy.yaml:/app/demo_policy.yaml:ro \
+  ghcr.io/top-celestial-company-ltd/dros-vajraclaw-hacker:latest
+
+# Verify Health Status
 curl http://localhost:8080/health
 ```
 
