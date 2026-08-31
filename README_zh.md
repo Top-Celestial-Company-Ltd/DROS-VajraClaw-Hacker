@@ -145,6 +145,17 @@ DROS 支援兩種極簡設定方式：**人類直覺 Markdown 格式 (`Vajra.md`
 
 ---
 
+
+> [!IMPORTANT]
+> 🔒 **極重要安全提示：設定完成後請將 `Vajra.md` 設為唯讀 (Read-Only)！**
+> 為了徹底杜絕失控或遭受提示詞注入 (Prompt Injection) 的 AI Agent 試圖「自己改寫安全策略」來為自己解鎖特權，**請在設定完成後，將該檔案權限鎖定為唯讀**：
+> - **Linux / macOS**: `chmod 444 Vajra.md`
+> - **Windows (PowerShell)**: `Set-ItemProperty -Path Vajra.md -Name IsReadOnly -Value $true`
+> - **Docker 掛載時**: 使用唯讀掛載模式 `-v $(pwd)/Vajra.md:/app/demo_policy.yaml:ro`
+> 
+> *(註：DROS 內核自帶「四重不變量防禦」，任何針對核心策略檔的寫入 Syscall 都會被微秒級攔截熔斷；搭配作業系統檔案鎖可達成 100% 物理防禦！)*
+
+
 ### 2. 🤖 讓 AI 幫你一秒生成策略！(AI Prompt Template)
 
 您不需要從零手寫！直接將以下**「萬用提示詞 (Prompt)」**複製給 ChatGPT、Claude 或 Cursor，AI 就會自動產出標準合規的 `Vajra.md`：

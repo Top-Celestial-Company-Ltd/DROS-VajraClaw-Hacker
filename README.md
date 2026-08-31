@@ -144,6 +144,17 @@ Declare allowed capabilities and hard security boundaries in plain Markdown:
 
 ---
 
+
+> [!IMPORTANT]
+> 🔒 **Crucial Security Best Practice: Lock `Vajra.md` to Read-Only After Configuration!**
+> To prevent compromised or hallucinating AI Agents from attempting to rewrite their own security rules to escalate privileges, **always set your policy file to read-only once configured**:
+> - **Linux / macOS**: `chmod 444 Vajra.md`
+> - **Windows (PowerShell)**: `Set-ItemProperty -Path Vajra.md -Name IsReadOnly -Value $true`
+> - **Docker Container Mount**: Mount with the read-only flag `-v $(pwd)/Vajra.md:/app/demo_policy.yaml:ro`
+> 
+> *(Note: DROS kernel enforces 4-Layer Invariant Defense to intercept unauthorized policy modifications in-band; combining this with OS file-level locks achieves 100% airtight physical defense!)*
+
+
 ### 2. 🤖 Let AI Generate Your Policy in 1 Second! (AI Prompt Template)
 
 You don't need to write policies from scratch! Copy the following universal prompt to ChatGPT, Claude, or Cursor:
