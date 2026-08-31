@@ -1,17 +1,36 @@
 {
   "name": "dros-agent-guard",
-  "displayName": "DROS Agent Execution Guardrail",
-  "description": "Deterministic microsecond execution guardrail & W3C DID security shield for Cursor & VS Code AI Agents.",
+  "displayName": "DROS Agent Guardrail for Cursor and VS Code",
+  "description": "Deterministic microsecond in-band execution guardrail and W3C DID security shield for Cursor and VS Code AI Agents.",
   "version": "1.0.0",
   "publisher": "Top-Celestial",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": ["Security", "Linters", "Other"],
-  "keywords": ["cursor", "security", "guardrail", "dros", "vajraclaw", "mcp"],
+  "keywords": ["cursor", "security", "guardrail", "dros", "vajraclaw", "mcp", "ai-safety"],
   "repository": {
     "type": "git",
     "url": "https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker"
   },
-  "main": "./dist/extension.js"
+  "homepage": "https://dr-os.io",
+  "main": "./dist/extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "dros.checkStatus",
+        "title": "DROS: Check Gateway Security Status"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
 }
