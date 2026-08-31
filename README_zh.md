@@ -229,3 +229,19 @@ docker run -d -p 8080:8080 --name dros-gateway \
   * 任何企業法人、受薪雇員商用或正式生產環境實施，嚴格需要商業授權（Startup / Enterprise / Sovereign）。商業授權請洽 [service@dr-os.io](mailto:service@dr-os.io) 或造訪 [https://dr-os.io](https://dr-os.io)。
 * **專利保護聲明 (Patent Notice)**：
   * DROS 確定性執行治理與帶內微秒級熔斷技術已申請美國臨時專利保護（**U.S. Provisional Patent Application No. 64/111,973，Patent Pending**）。所有商業部署與實施權益由 康宸園有限公司 (Top-Celestial Company Ltd.) 專有保留。
+
+
+## 🛡️ 治理與防禦能力對照矩陣 (Defense Capability Matrix)
+
+| 威脅防禦維度 / 核心能力 | 傳統 LLM 防護 (NeMo / 提示詞審查) | 📦 DSH 獨立 TypeScript 外掛 | 🛡️ DROS Hacker Docker 網關 | 🏢 企業版 / K8s 集群 |
+| :--- | :---: | :---: | :---: | :---: |
+| **運行載體 (Vehicle)** | 雲端 API / 外部大模型 | 進程內原生 JS (零外部依賴) | **本地 Docker 容器 (`:8080`)** | 企業集群 / K8s / C-ABI 微核心 |
+| **保護範圍 (Scope)** | 單次對話 Session | DSH 單一本機進程 | **全生態 (Claude+Codex+Cursor+DSH+AGY)** | 跨主機節點集群 / 私有雲 |
+| **執行意圖治理 (Governance)** | 🔴 僅限文字模糊比對 | 🟢 **正則表達式硬防線 (Regex Failsafe)** | 🟢 **100% 確定性 AST 語法樹熔斷 (<1µs)** | 🟢 **AST 點陣圖 ＋ eBPF 內核級攔截** |
+| **破壞性指令攔截 (Destructive)** | 🔴 易遭提示注入與編碼繞過 | 🟢 **敏感路徑物理阻斷** | 🟢 **底層 Syscall 物理硬熔斷** | 🟢 **硬體 HSM 隔離 ＋ 內核檔案鎖** |
+| **機密與金鑰防洩漏 (Secrets)** | 🔴 無物理安全防線 | 🟢 **敏感路徑讀取阻斷** | 🟢 **動態遮蔽 ＋ 虛擬沙箱隔離** | 🟢 **硬體 HSM ＋ 零知識微證明 (ZKP)** |
+| **Agent 主體身分綁定 (Identity)** | 🔴 無身分認證 | 🟢 Session 級別識別碼 | 🟢 **原生 W3C `did:key` (Ed25519 簽章)** | 🟢 **三層 PKI `DrosIdentityToken (DIT)`** |
+| **不可篡改審計存證 (Audit)** | 🔴 普通可竄改文字 Log | 🟢 **本地 SHA-256 雜湊鏈** | 🟢 **Ed25519 簽章 Merkle 雜湊鏈** | 🟢 **歐盟 AI 法案第 12 條法院級存證** |
+| **RFC-010 代理通行證 (Passport)** | 🔴 不支援 | 🟢 格式解析器 | 🟢 **本地發行 ＋ 跨 Agent 密碼學驗證** | 🟢 **跨組織漫遊通行證與權限繼承** |
+| **決策延遲 (Decision Latency)** | 🔴 1,000 ~ 3,000 ms (二次模型極慢) | 🟢 **<1 ms (記憶體直接攔截)** | 🟢 **<1 µs (C-ABI) / <1 ms (REST 網關)** | 🟢 **<500 ns (零拷貝常數時間查表)** |
+| **授權條款 (License)** | 按 Token 計費 | **100% 免費開源 (Apache-2.0)** | **個人永久免費授權 (Free for Individuals)** | 新創版 $2,990 / 企業版 $29,990 |

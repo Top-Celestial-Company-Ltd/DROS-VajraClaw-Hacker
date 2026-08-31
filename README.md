@@ -50,6 +50,23 @@ It moves intelligence to compile-time (`demo_policy.yaml` / `Vajra.md`) and enfo
 
 ---
 
+## 🛡️ Governance & Defense Capability Matrix
+
+| Threat Vector / Capability | Traditional LLM Guardrails (NeMo/Lakera) | 📦 DSH Standalone TS Plugin | 🛡️ DROS Hacker Docker Gateway | 🏢 Enterprise / Mesh Tier |
+| :--- | :---: | :---: | :---: | :---: |
+| **Runtime Vehicle** | Cloud API / External Model | In-Process JS (Zero Deps) | **Local Docker Container (`:8080`)** | Enterprise Cluster / K8s / C-ABI |
+| **Protected Scope** | Single Chat Session | DSH Local Process | **Full Ecosystem (Claude+Codex+Cursor+DSH+AGY)** | Multi-Node Fleet / Private Cloud |
+| **Execution Intent Governance** | 🔴 Text-matching only | 🟢 **Regex Pattern Failsafe** | 🟢 **100% Deterministic AST Fusing (<1µs)** | 🟢 **AST Bitmaps + eBPF Kernel Hooks** |
+| **Destructive Command Blocking** | 🔴 Vulnerable to Injections | 🟢 **Sensitive Path Block** | 🟢 **Deterministic Syscall Severing** | 🟢 **Hardware HSM + Kernel-level Lock** |
+| **Credential & Secret Protection** | 🔴 No Physical Guard | 🟢 **Sensitive Path Block** | 🟢 **Dynamic Redaction + Sandbox Isolation** | 🟢 **Hardware HSM + ZKP-Lite Proofs** |
+| **Agent Identity Binding** | 🔴 No Identity | 🟢 Session-level ID | 🟢 **Native W3C `did:key` (Ed25519)** | 🟢 **3-Tier PKI `DrosIdentityToken (DIT)`** |
+| **Non-Repudiable Audit Chain** | 🔴 Plain Text Logs | 🟢 **Local SHA-256 Hash Chain** | 🟢 **Ed25519 Signed Merkle Hash Chain** | 🟢 **EU AI Act Art. 12 Court-Grade Chain** |
+| **RFC-010 Passports** | 🔴 Unsupported | 🟢 Format Parser | 🟢 **Local Minting & Cross-Agent Verification** | 🟢 **Cross-Organization Roaming Passports** |
+| **Decision Latency** | 🔴 1,000 ~ 3,000 ms (Slow LLM) | 🟢 **<1 ms (Direct In-Memory Hook)** | 🟢 **<1 µs (C-ABI) / <1 ms (REST Gateway)** | 🟢 **<500 ns (Zero-Copy Memory Lookup)** |
+| **License** | Pay-per-Token API | **100% Free (Apache-2.0)** | **Free License for Individuals** | Startup $2,990 / Enterprise $29,990 |
+
+---
+
 ## 🚀 Quick Start (One-Command Setup)
 
 ### Option 1: Run via Pre-built Docker Container (Recommended)
