@@ -1,0 +1,17 @@
+{
+  "name": "dros-agent-guard",
+  "displayName": "DROS Agent Execution Guardrail",
+  "description": "Deterministic microsecond execution guardrail & W3C DID security shield for Cursor & VS Code AI Agents.",
+  "version": "1.0.0",
+  "publisher": "Top-Celestial",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Security", "Linters", "Other"],
+  "keywords": ["cursor", "security", "guardrail", "dros", "vajraclaw", "mcp"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker"
+  },
+  "main": "./dist/extension.js"
+}
