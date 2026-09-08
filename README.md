@@ -69,7 +69,15 @@ It moves intelligence to compile-time (`demo_policy.yaml` / `Vajra.md`) and enfo
 
 ## 🚀 Quick Start (One-Command Setup)
 
-### Option 1: Run via Pre-built Docker Container (Recommended)
+## 🚀 Quick Start: Choose Your Platform
+
+### 🪟 Option 0: Windows Desktop App (.exe) (Recommended for Desktop Users)
+* **Zero-Docker & Zero-CLI**: Double-click `VajraClaw-Setup.exe` to install. Runs ultra-lightweight (<25MB RAM) in the Windows System Tray.
+* **Auto-Hook**: Automatically detects and protects **Claude Desktop** (`%APPDATA%\Claude`), **Cursor**, and **VS Code**.
+* **Visual Dual-Track Dashboard**: Toggle intuitive safety switches (block destructive syscalls, protect `.env` / credentials) or switch to Expert Mode for raw YAML policy editing.
+* 👉 **Download**: Grab the latest installer from [GitHub Releases](https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker/releases).
+
+### 🐧 Option 1: Run via Docker Container (For Linux / macOS / DevOps) (Recommended)
 ```bash
 # Option A: One-Command Clone & Start (Self-Contained & Recommended)
 git clone https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker.git
