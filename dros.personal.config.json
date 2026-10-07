@@ -1,0 +1,83 @@
+{
+  "version": "1.0.0",
+  "principalId": "did:key:z6MkhaXgBZDvotDkL5257faiz4898XnpGuvZ42A2xTsq",
+  "mode": "strict",
+  "rules": [
+    {
+      "toolId": "filesystem",
+      "allowedActions": [
+        "read_file",
+        "list_directory",
+        "get_file_info"
+      ],
+      "blockedActions": [
+        "delete_file",
+        "remove_directory",
+        "format_disk"
+      ],
+      "paramConstraints": {
+        "path": {
+          "disallowedPatterns": [
+            "..",
+            "/etc/",
+            "/root/",
+            "C:\\Windows\\",
+            ".env",
+            ".ssh"
+          ]
+        }
+      }
+    },
+    {
+      "toolId": "sqlite",
+      "allowedActions": [
+        "read_query",
+        "select"
+      ],
+      "blockedActions": [
+        "drop_table",
+        "truncate",
+        "alter_table"
+      ],
+      "paramConstraints": {
+        "query": {
+          "disallowedPatterns": [
+            "DROP ",
+            "DELETE ",
+            "TRUNCATE ",
+            "ALTER ",
+            "GRANT ",
+            "REVOKE "
+          ]
+        }
+      }
+    },
+    {
+      "toolId": "fetch",
+      "allowedActions": [
+        "get"
+      ],
+      "paramConstraints": {
+        "url": {
+          "disallowedPatterns": [
+            "localhost",
+            "127.0.0.1",
+            "169.254.169.254",
+            "internal."
+          ]
+        }
+      }
+    },
+    {
+      "toolId": "payment",
+      "allowedActions": [
+        "transfer"
+      ],
+      "paramConstraints": {
+        "amount": {
+          "max": 500
+        }
+      }
+    }
+  ]
+}

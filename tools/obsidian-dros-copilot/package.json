@@ -1,0 +1,19 @@
+{
+  "name": "obsidian-dros-copilot",
+  "version": "1.0.0",
+  "description": "這是 **DROS Doctrinal Copilot (DROS 義理書僮)** 插件的官方專用獨立開發資料夾。",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "obsidian": "^1.12.3",
+    "svelte": "^5.55.7",
+    "typescript": "^6.0.3"
+  }
+}

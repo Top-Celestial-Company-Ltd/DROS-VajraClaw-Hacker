@@ -1,0 +1,376 @@
+/* DROS Doctrinal Copilot Stylesheet - Zen Dark Mode */
+
+.dros-copilot-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: rgba(22, 22, 22, 0.45) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 0, 0.12);
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    font-family: var(--font-interface);
+}
+
+.dros-copilot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.dros-copilot-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #ffd700;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+/* 模式切換器 */
+.dros-mode-selector {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dros-mode-btn {
+    background: transparent;
+    border: none;
+    font-size: 0.8em;
+    padding: 4px 8px;
+    color: #888;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.dros-mode-btn:hover {
+    color: #ddd;
+}
+
+.dros-mode-btn.active {
+    background: rgba(255, 215, 0, 0.15) !important;
+    color: #ffd700 !important;
+    font-weight: bold;
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.15);
+}
+
+/* 🌐 語言自適應切換按鈕 */
+.dros-lang-toggle-btn {
+    background: rgba(255, 215, 0, 0.05) !important;
+    border: 1px solid rgba(255, 215, 0, 0.2) !important;
+    font-size: 0.76em !important;
+    padding: 3px 8px !important;
+    color: #ffd700 !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 500 !important;
+}
+
+.dros-lang-toggle-btn:hover {
+    background: rgba(255, 215, 0, 0.18) !important;
+    border-color: rgba(255, 215, 0, 0.35) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.25) !important;
+}
+
+
+/* 聊天記錄滾動區 */
+.dros-message-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 4px;
+    margin-bottom: 10px;
+}
+
+/* 聊天氣泡 */
+.dros-chat-bubble {
+    display: flex;
+    gap: 8px;
+    animation: fadeInBubble 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes fadeInBubble {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dros-chat-bubble.user {
+    flex-direction: row-reverse;
+}
+
+.dros-chat-bubble .avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.dros-chat-bubble.assistant .avatar {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.dros-chat-bubble .bubble-container {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dros-chat-bubble .content {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    line-height: 1.45;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.dros-chat-bubble.user .content {
+    background: rgba(0, 128, 128, 0.25);
+    color: #e0f2f1;
+    border: 1px solid rgba(0, 128, 128, 0.35);
+    border-top-right-radius: 2px;
+}
+
+.dros-chat-bubble.assistant .content {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-left-radius: 2px;
+}
+
+.dros-chat-bubble.assistant.shimmering .content {
+    background: rgba(255, 215, 0, 0.06) !important;
+    border: 1px solid rgba(255, 215, 0, 0.18) !important;
+    color: #ffd700 !important;
+    animation: zenBreathing 1.8s ease-in-out infinite;
+}
+
+@keyframes zenBreathing {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1.0; }
+}
+
+/* 訊息卡片動作欄 */
+.dros-message-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.dros-save-note-btn {
+    background: rgba(255, 215, 0, 0.06) !important;
+    border: 1px solid rgba(255, 215, 0, 0.15) !important;
+    color: #ffd700 !important;
+    font-size: 0.78em !important;
+    padding: 3px 8px !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+}
+
+.dros-save-note-btn:hover {
+    background: rgba(255, 215, 0, 0.18) !important;
+    border-color: rgba(255, 215, 0, 0.3) !important;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* 控制列 */
+.dros-control-bar {
+    padding: 4px 0;
+    margin-bottom: 6px;
+}
+
+.dros-inject-btn {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #aaa;
+    font-size: 0.8em;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.dros-inject-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.dros-inject-btn.active {
+    background: rgba(0, 128, 128, 0.15) !important;
+    border: 1px solid rgba(0, 128, 128, 0.3) !important;
+    color: #4db6ac !important;
+    font-weight: bold;
+}
+
+/* 輸入區域 */
+.dros-input-area {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dros-input-area textarea {
+    background: transparent !important;
+    border: none !important;
+    resize: none;
+    font-size: 0.85em;
+    padding: 4px;
+    color: #e0e0e0;
+    height: 38px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.dros-send-btn, .dros-clear-btn {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    font-size: 0.8em;
+    padding: 0 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dros-send-btn:hover {
+    background: rgba(255, 215, 0, 0.25);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+/* ⏹ 取消模式：按鈕變紅色系，帶 pulse 提示 */
+.dros-send-btn.dros-cancel-mode {
+    background: rgba(220, 60, 60, 0.15);
+    border: 1px solid rgba(220, 80, 80, 0.4);
+    color: #ff7070;
+    animation: dros-cancel-pulse 1.6s ease-in-out infinite;
+}
+.dros-send-btn.dros-cancel-mode:hover {
+    background: rgba(220, 60, 60, 0.35);
+    box-shadow: 0 0 10px rgba(220, 60, 60, 0.4);
+    animation: none;
+}
+@keyframes dros-cancel-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.55; }
+}
+
+.dros-clear-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #aaa;
+}
+
+.dros-clear-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* 🔓 DROS 物理文字解鎖 - 強制打破 Obsidian 側邊欄與上層所有容器的文字複製限制 */
+.workspace-leaf-content[data-type="dros-chat-view"],
+.workspace-leaf-content[data-type="dros-chat-view"] *,
+.dros-copilot-wrapper,
+.dros-copilot-wrapper *,
+.dros-chat-bubble,
+.dros-chat-bubble * {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
+
+/* 設定面板的快速指引手冊 */
+.dros-settings-guide-container {
+    background: rgba(255, 215, 0, 0.03) !important;
+    border: 1px solid rgba(255, 215, 0, 0.12) !important;
+    border-radius: 8px !important;
+    margin-bottom: 20px !important;
+    padding: 10px 14px !important;
+    box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.01);
+    transition: all 0.3s ease;
+}
+
+.dros-settings-guide-container[open] {
+    background: rgba(255, 215, 0, 0.05) !important;
+    border-color: rgba(255, 215, 0, 0.22) !important;
+}
+
+.dros-settings-guide-summary {
+    font-weight: bold !important;
+    color: #ffd700 !important;
+    cursor: pointer !important;
+    outline: none !important;
+    user-select: none !important;
+    font-size: 1.05em !important;
+}
+
+.dros-settings-guide-content {
+    margin-top: 12px !important;
+    font-size: 0.9em !important;
+    line-height: 1.65 !important;
+    color: var(--text-muted) !important;
+}
+
+.dros-settings-guide-content h3 {
+    margin: 14px 0 6px 0 !important;
+    color: var(--text-normal) !important;
+    font-size: 1.02em !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 4px;
+}
+
+.dros-settings-guide-content ol, .dros-settings-guide-content ul {
+    margin: 6px 0 12px 0 !important;
+    padding-left: 20px !important;
+}
+
+.dros-settings-guide-content li {
+    margin-bottom: 6px !important;
+}
+
+.dros-settings-guide-content code {
+    background: rgba(0, 0, 0, 0.25) !important;
+    color: #4db6ac !important;
+    padding: 2px 5px !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    font-family: monospace !important;
+}
+
+
+

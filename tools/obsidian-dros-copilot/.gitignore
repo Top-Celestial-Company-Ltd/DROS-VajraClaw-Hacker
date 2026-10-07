@@ -1,0 +1,13 @@
+# DROS Obsidian Plugin Developer Ignored Files
+# --------------------------------------------------
+
+# 忽略龐大的 node 依賴包（使用者拉下代碼後執行 npm install 即可自行重建）
+node_modules/
+
+# 忽略編譯地圖與快取
+*.map
+.eslintcache
+
+# 系統暫存
+.DS_Store
+Thumbs.db

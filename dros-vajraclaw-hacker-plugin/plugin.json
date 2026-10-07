@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "dros_vajraclaw",
+  "name_for_human": "DROS VajraClaw (Hacker Edition)",
+  "description_for_model": "Deterministic runtime execution governance gateway for AI agents. Evaluates tool calls against declarative parameter-level boundary rules (DWGR-8) before physical execution, and maintains a tamper-evident SHA-256 local audit hash chain.",
+  "description_for_human": "Deterministic runtime execution governance and audit gateway for AI agents.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "mcp",
+    "url": "http://127.0.0.1:8080/mcp"
+  },
+  "logo_url": "assets/logo.png",
+  "contact_email": "service@dr-os.io",
+  "legal_info_url": "https://dr-os.io"
+}

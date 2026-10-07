@@ -1,0 +1,9 @@
+InferenceMode: Vajra
+HardeningLevel: 10
+AuthorityNodesOnly: true
+Fallback: Bodhisattva
+OutputFormat: Markdown_DrosSpec
+# 契約級算力綁定 (可選)
+ComputeEngine:
+  Model: "gemini-3.1-pro"
+  Temperature: 0.1

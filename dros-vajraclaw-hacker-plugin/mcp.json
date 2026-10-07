@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "dros-vajraclaw": {
+      "transport": "http",
+      "url": "http://127.0.0.1:8080/mcp",
+      "tools": [
+        "dros_evaluate",
+        "dros_audit",
+        "dros_status"
+      ]
+    }
+  }
+}
