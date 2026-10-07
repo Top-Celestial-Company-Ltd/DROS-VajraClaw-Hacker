@@ -227,7 +227,7 @@ export default class DrosCopilotPlugin extends Plugin {
 2.  **官方發佈 (Official Registry)**：
     *   對 `obsidianmd/obsidian-releases` 提交 Pull Request，審核通過後，全球用戶均可在官方插件市場搜尋到 `DROS Doctrinal Copilot`。
 3.  **商業數據金鑰 (Data Monetization)**：
-    *   插件代碼完全開源（滿足 AGPL-3.0 協定）。
+    *   插件代碼完全開源（滿足 個人與非商業免費授權 (Not Open Source)）。
     *   `dros_golden_manifest.json`（16,071 個實心節點的完整校對黃金數據）採取專利授權。免費版僅內建 500 個高頻名相，完整版需輸入訂閱授權碼（License Key）啟用。此舉完美落實了「軟體開源、數據閉源商用」的雙軌防禦戰略！
 
 ---

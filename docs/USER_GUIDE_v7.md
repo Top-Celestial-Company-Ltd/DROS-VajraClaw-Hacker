@@ -59,7 +59,7 @@
 > **【請依序執行以下任務】**
 > 請前往以下專案網址：`https://github.com/droslabs/dros` (請自行替換為實際網址)
 > 為了真正看懂這套系統的底層邏輯，請你務必「依序」讀取並分析以下關鍵公開檔案：
-> 1. 讀取 **`README.md`**：特別關注裡面的 `Epistemological Governance & Licensing (AGPL-3.0)` 以及 `DROS Contracts` 雙軌合約機制。
+> 1. 讀取 **`README.md`**：特別關注裡面的 `Epistemological Governance & Licensing (個人與非商業免費授權)` 以及 `DROS Contracts` 雙軌合約機制。
 > 2. 讀取 **`DROS_Public_Terminology.md`**：仔細拆解裡面定義的 `Authority-Bound Inference (權威受限推理)` 與 `Provenance-Locked Reasoning (溯源鎖定推演)` 這兩個核心術語。
 > 3. 掃描 **`DROS_MICROKERNEL_SPEC.md`** 與公開的 SDK 引擎目錄：從公開的 `GuardVM` 架構中，感受系統如何在運行時強制進行 T-Number 座標攔截（官方已隱藏底層量產腳本與 16,071 個實心節點，作為商業機密）。
 > 4. 深度閱讀技術防禦文件 **`docs/DESIGN_JUSTIFICATION.md`** 與 **`docs/LIMITATIONS_AND_DEFENSE.md`**：仔細對比這套架構與目前市面上主流的 RAG（檢索增強生成）、Vector DB（向量資料庫）、Fine-tuning（微調）有何本質上的不同。它為什麼要刻意選擇這種看似「笨重但極致堅固」的純實體檔案拓樸映射？
