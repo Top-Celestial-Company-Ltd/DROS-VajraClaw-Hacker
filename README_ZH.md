@@ -1,64 +1,89 @@
-﻿# ?儭?Deterministic Runtime OS (DROS) - VajraClaw Hacker Edition
-**DROS: 蝣箏??批銵?瘝餌?雿平蝟餌絞??Agent 摰敺格敹?*
+# ⚡ DROS™ VajraClaw (Hacker Edition 個人免費版)
+### 專為個人開發者打造的獨立 Docker 執行期治理網關 (支援 W3C DID、<1μs 微秒級熔斷與多 Agent 全生態聯防)
 
-[![License: Source-Available](https://img.shields.io/badge/License-Source--Available%20(??璆剖?鞎餉?隡?-blue.svg)](#-????閬?licensing--compliance)
-[![Patent Status](https://img.shields.io/badge/U.S._Patent_Pending-64%2F111%2C973-blue.svg)](#-????閬?licensing--compliance)
-[![Technical Reports](https://img.shields.io/badge/Open_Archive-Zenodo_Preprints-purple.svg)](https://doi.org/10.5281/zenodo.21808499)
-[![Internal Spec](https://img.shields.io/badge/?折閬-DROS--RFC--010-darkgreen.svg)](#)
+[![官方網站](https://img.shields.io/badge/官方網站-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
+[![Docker Ready](https://img.shields.io/badge/Docker-Ready-blue.svg)](#)
+[![個人免費授權](https://img.shields.io/badge/授權-個人永久免費-green.svg)](#)
+[![美國臨時專利](https://img.shields.io/badge/美國臨時專利-64%2F111%2C973-blue.svg)](#)
+[![RFC-010 護照標準](https://img.shields.io/badge/標準-RFC--010_Draft-orange.svg)](#)
 
-[English](README_EN.md) | [蝜?銝剜?](README_ZH.md)
+[English](README.md) | [繁體中文說明](README_zh.md) | [🌐 官方網站](https://dr-os.io)
 
----
-
-> ?? **??瑁????閬?璅∪??箸靘蝳佗?蝟餌絞撠勗歇蝬◤?餌鈭?*
->
-> Prompt Engineering ?其?璆剔?摰?Ｗ?撌脩?憭望??隢?System Prompt 閮剛?敺?銴?嚗????內閰釣?亦?蝛嗉蝛輸蝺?
-> **DROS 銝蝝?摮?Prompt 瞈曄雯嚗 Agent ?瑁??祥??皞?* ???賢?撽??蔭?潛楊霅舀?嚗蒂?典銵??祕?賜Ⅱ摰扳蝑??伐?
-> * **撣嗅 C-ABI / Rust 敺格敹?*嚗?*$< 3\ \mu\text{s}$** 蝣箏??扯?????瘥?嚗??????閮擃??蝵抬???
-> * **Docker ?砍?啣?蝬脤?**嚗?*$< 1\ \text{ms}$** ?砍 HTTP/IPC 隞??撱園嚗?? Agent 瘝??啣???
+**DROS VajraClaw Hacker Edition** 是官方專為個人開發者、研究人員及獨立工作站打造的**永久免費獨立 Docker 治理網關 (Free License for Individuals)**。它在自主 AI Agent（Google Antigravity、Anthropic Claude、OpenAI Codex、Cursor、CrewAI、AutoGen、DeepSeek Harness）與您的本機作業系統之間，建立不可逾越的實體執行期安全防線。
 
 ---
 
-> ? **??啣??嫘??冽?甈?隡平?寞?隢誑 [摰蝬脩? (dr-os.io)](https://dr-os.io) ?砍??箸???*
+## 🛑 為什麼需要 DROS 確定性治理？
+傳統依賴 Prompt Engineering、Llama-Guard 或模型自我審查的「機率型安全」在執行期必定潰敗：
+* **提示注入 (Prompt Injection) 輕易繞過**：黑客只需簡單的混淆或 Jailbreak 即可誘騙 Agent 執行 `rm -rf /` 或外洩敏感金鑰。
+* **無法防範執行期競爭 (TOCTOU) 與延遲**：調用外部審查模型會產生 1~3 秒的巨大延遲，且無法管到作業系統系統呼叫 (Syscall)。
+* **缺乏法律不可否認性**：無法從密碼學上證明 *為什麼* Agent 執行了某項特權操作。
 
-| 摰? / 6-Pillar 璈蝬剖漲 | ? Hacker (?犖蝷曄黎??- ?祥閰摯) | ? Startup | ? Enterprise | ?? Sovereign |
+**DROS 不是 Prompt 包裝器，而是確定性執行期作業系統 (Deterministic Runtime OS)**：
+將安全智慧移至編譯期 (`demo_policy.yaml` / `Vajra.md`)，並在運行期透過純記憶體常數時間 $\mathcal{O}(1)$ 位元圖譜直接在系統呼叫前**硬性熔斷 (Strict Fail-Closed)**！
+
+---
+
+## 🌟 個人版核心權益與特色 (100% 個人永久免費)
+
+* 🛡️ **守護最多 5 個並發 Agent**：在單台個人開發機上，同時為多個不同平台的活躍 Agent 提供帶內執行期防護。
+* 🔑 **原生 W3C `did:key` 與 RFC-010 護照**：基於 Ed25519 數位簽章的密碼學身分綁定，杜絕跨進程偽造。
+* ⚡ **微秒級帶內硬熔斷 (<1μs)**：確定性 $\mathcal{O}(1)$ AST 策略查表，在惡意系統呼叫發起瞬間物理阻斷。
+* 📜 **SHA-256 Merkle 雜湊鏈審計記錄**：具備不可否認性的本地執行軌跡與重啟回讀機制，防範任何日誌竄改。
+* 🌐 **通用跨 Agent 全生態相容**：提供原生 REST 與 MCP 介面，全面支援 AGY、Claude、Codex、Cursor、LangChain、CrewAI 與 DSH。
+
+---
+
+## 📊 治理與防禦能力對照矩陣 (Defense Matrix)
+
+| 威脅向量與防護維度 | 傳統 LLM 語意審查 (Guardrails) | 📦 DSH 純 TS 外掛單機版 | ⚡ DROS Hacker Docker 網關版 (本倉) | 🏢 企業版 (Enterprise / Mesh) |
 | :--- | :---: | :---: | :---: | :---: |
-| **?格?摰Ｘ** | **?犖???/ ?祆?憭?Agent嚗??平?券?** | 10~50鈭箸?萄???| 銝剖之??璆?/ 銝??砍 | ??? / ? |
-| **璈?? (UUIDs)** | **1 蝯?UUID** | 3 蝯?UUIDs | 15 蝯?UUIDs | **?⊿???* |
-| **Concurrent Agents 銝?** | **5 ?蒂??Agent** | 30 ??| 450 ??| **?⊿???(Swarm)** |
-| **Pillar 1嚗rincipal 頨思遢霅?** | ??**?? W3C `did:key` ??** | ??**3-Tier PKI DIT** | ??**頝典? BEC ???潭** | ??蝖祇? Dongle ?啗? |
-| **Pillar 2嚗uthorization 甈????*| ??**?賢?暺??撠?* | ??**?嗅?蝛?Bitmaps** | ??**?刻閮?Capability ??**| ????雿???蝬剔??|
-| **Pillar 3嚗ool Bound 撌亙??** | ??**撣嗅 C-ABI嚗?<3\mu\text{s}$**<br>*(Docker 隞??嚗?<1\text{ms}$)* | ??**撣嗅? $<30\mu\text{s}$** | ??**甈∪凝蝘?敺格敹?*| ???嗥?蝖祇?蝝????|
-| **Pillar 4嚗olicy Gate 銝之???* | ????????| ??**?? PII ?株** | ??**HITL ?偷 + ZKP-Lite** | ??頠?蝝??亦??|
-| **Pillar 5嚗udit Log 蝔賣餈賣滲** | ??**Ed25519 蝪賜??亥?** | ??**Ed25519 ?訾?蝪賜?**| ??**SHA-256 Merkle ????* | ??銝?西??扳??Ｙ??? |
-| **Pillar 6嚗xpiry/Revocation 蝘**| ????? Gateway | ? 15?? BEC ?? | ??**閮擃??????** | ???撘?蝝雯?潭??|
-| **DROS-RFC-010 ?折霅瑞?澆?** | ??**?砍摰蝪賜??潸?** | ??**憭???DIT 蝪賜蔡** | ??**隡平 GuardVM ?葉撽?** | ???蝝?3-Tier 蝪賜???|
-| **?敶批?鞈潛璆剖?閬?Package** | ??銝??曉?鞈?| ? **?敶批?鞈?* | 潃?**?敶批?鞈?* | ???摰甈? |
-| **?函蔡頛?** | **Local PC / Docker 蝬脤?**| **VM / NAS Docker** | K8s / GKE / Cluster | Air-Gapped / FPGA |
+| **運行載體與依賴** | 雲端 API / 外部模型 | 純 JS 進程內 (零外部依賴) | **本地 Docker 容器 (`:8080`)** | 企業集群 / K8s / C-ABI 微核心 |
+| **守護 Agent 範圍** | 單一對話 Session | 專屬保護 DSH 本地進程 | **跨平台全生態 (Claude+Codex+Cursor+DSH+AGY)** | 全企業數千節點 / 私有雲 |
+| **防 Prompt 詐騙刪庫** | ❌ 易被 Jailbreak 繞過 | 🟢 **100% 正則安全閥攔截** | 🟢 **100% 確定性 AST 熔斷 (<1μs)** | 🟢 **AST 點陣查表 + eBPF 內核硬攔截** |
+| **憑證與私鑰防外洩** | ❌ 無法實體隔離 | 🟢 **敏感路徑讀取攔截** | 🟢 **動態 PII 遮蔽 + 虛擬檔案沙盒** | 🟢 **硬體 HSM 綁定 + ZKP-Lite 證明** |
+| **Agent 主體身分** | ❌ 無密碼學身分 | 🟡 Session 級識別碼 | 🟢 **原生 W3C `did:key` (Ed25519)** | 🟢 **3-Tier PKI `DrosIdentityToken (DIT)`** |
+| **不可否認審計鏈** | ❌ 明文日誌易被竄改 | 🟢 **本地 SHA-256 雜湊鏈** | 🟢 **Ed25519 簽名 Merkle 雜湊鏈** | 🟢 **歐盟 AI 法案第 12 條法院級存證** |
+| **RFC-010 護照** | ❌ 不支援 | 🟡 標準格式解析 | 🟢 **本地簽發與跨 Agent 交互認證** | 🟢 **分散式跨組織護照漫遊檢驗** |
+| **執行期判定延遲** | 🔴 1,000 ~ 3,000 ms | 🟢 **<1 ms (記憶體直接攔截)** | 🟢 **<1 ms (Loopback HTTP / C-ABI)** | 🟢 **<500 ns (極致 C-ABI 記憶體查表)** |
+| **授權方案** | 按 Token / 訂閱計費 | **完全免費 (非開源自訂授權)** | **個人 Hacker 永久免費授權** | Startup $2,990 / Enterprise $29,990 |
 
 ---
 
-## ?? 憭?舀???函蔡?? (Multi-Scenario Deployment Guide)
+## 🚀 極速上手指南 (Quick Start)
 
-### ?? ?? A嚗SH (DeepSeek Harness) 瘝?雿輻??
-1. **?? DROS Docker 蝬脤?**嚗?
-   ```bash
-   docker run -d -p 8080:8080 --name dros-gateway dros/hacker-gateway:v2.1.0
-   ```
-2. **??DSH 銝剖?鋆冗?憭?**嚗?
-   ```bash
-   dsh plugin --profile web add dsh-plugin-dros
-   ```
-3. **鈭怠?敺桃?蝝銵祥??*嚗SH ?抒? Agent 撌亙隤輻撠??喟 DROS ?瑁??凝?詨??脰?蝣箏??折霅瑁?撖抵???
+### 方式一：直接運行預先建置之 Docker 容器 (推薦)
+無需手動編譯，直接拉取並啟動：
+```bash
+# 1. 一鍵啟動 DROS Hacker 網關 (免授權碼，開箱即用)
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/FreeTrial-Sandbox/demo_policy.yaml:/app/demo_policy.yaml \
+  dros/hacker-gateway:v1.0.0
+
+# 2. 檢驗網關健康狀態
+curl http://localhost:8080/health
+```
+
+### 方式二：從原始碼建置並啟動
+```bash
+git clone https://github.com/Top-Celestial-Company-Ltd/DROS-VajraClaw-Hacker.git
+cd DROS-VajraClaw-Hacker
+docker compose -f docker/docker-compose.yml up -d
+```
 
 ---
 
-### ? ?? B嚗ntigravity 2.0 / Codex / Cursor ???(MCP ?降)
-?冽??`mcp_settings.json` ??Claude Desktop ?蔭銝剖???DROS 蝬脤?嚗?
+## 🔌 5 大主流 Agent 生態系全情境快速接入指引 (Ecosystem Integrations)
+
+詳細範例代碼請參考目錄 [`examples/`](examples/)：
+
+### 1. 🤖 Anthropic Claude Desktop & Claude Code (MCP 協議)
+完整設定檔請見 [`examples/claude_mcp/`](examples/claude_mcp/)：
+在您的 `claude_desktop_config.json` 或 `mcp_settings.json` 加入：
 ```json
 {
   "mcpServers": {
-    "dros-governance": {
+    "dros-vajraclaw": {
       "url": "http://localhost:8080/mcp",
       "transport": "http"
     }
@@ -66,9 +91,12 @@
 }
 ```
 
----
+### 2. 💻 Cursor IDE / VS Code Agent (終端安全守護)
+完整規範請見 [`examples/cursor_rules/`](examples/cursor_rules/)：
+在專案根目錄建立 `.cursorrules`，將終端危險命令檢查導向 `http://localhost:8080/evaluate`，在 AI 嘗試執行刪庫或匯出機密時在 1 微秒內硬性拒絕！
 
-### ?? ?? C嚗???Python / LangChain / AutoGen ???
+### 3. 🐍 OpenAI SDK / LangChain / LlamaIndex (3行代碼封裝)
+完整範例請見 [`examples/openai_langchain/`](examples/openai_langchain/)：
 ```python
 from integrations.vajraclaw.runtime import VajraClaw
 
@@ -78,139 +106,142 @@ if not decision:
     raise PermissionError(f"Blocked by DROS: {decision.reason}")
 ```
 
+### 4. 👥 CrewAI & Microsoft AutoGen (多 Agent 蜂群角色治理)
+完整範例請見 [`examples/crewai_autogen/`](examples/crewai_autogen/)：
+為群體智能中的每個 Agent（如 Legal、Dev、Auditor）指派獨立 W3C DID，依角色隔離系統呼叫權限。
+
+### 5. 📦 DeepSeek Harness (DSH 外掛聯防)
+完整範例請見 [`examples/dsh_plugin/`](examples/dsh_plugin/)：
+```bash
+dsh plugin --profile web add dsh-plugin-vajraclaw
+```
+*(在 DSH 設定介面將 `gatewayUrl` 填入 `http://localhost:8080`，即可解鎖 W3C DID 與完整網關治理能力)*
+
 ---
 
-## ?儭??格??函蔡?怠???痊隞餃?蝵格?隞?(Target Profiles & Shared Responsibility)
 
-DROS ?湔???**?撅文?閬炎?仿? (In-Process PEP)** ??**?函??脩?蝖祇???(Isolated Confinement)** 銋???
+---
 
-| ?格??函蔡?怠? (Target Profile) | ?函蔡頛??銵憓?| 靽?蝑??霅瑟???| 隤?隢????蔭璇辣 |
-| :--- | :--- | :--- | :--- |
-| **Linux / Windows 隡箸??刻??璈?* | ?函??脩?蝬脤? / Docker Sidecar | **撘瑕??Fail-Closed嚗?⊥??賂?** | Agent ???澆??雯頝臬?征??(`egress: default-deny`)嚗ateway ?箏銝隞???箏嚗??函?撖行?霅??券??Ｘ Gateway 閮擃?|
-| **?楠?∩犖璈?(Physical AI / UAV)** | 璈?隡湧閮?璈?(NVIDIA Jetson / Linux ROS 2) | **撣嗅 MAVLink ???誘?** | ???潔撈?券?佗??冽?隞斤敺憌? UART/Ethernet ???嚗?銝?仿?銵頝?RTOS/??MMU ??撅文凝?批?券??找蜓????|
-| **銵?蝡?SDK (iOS / Android)** | 摰蹂蜓 App ?批????摨?(`.dylib` / `.so`) | **In-Process PEP嚗??典惜??嚗?* | ??蝺刻陌??App 鈭脖??找誑蝝??折 Agent 銵嚗?銝脰??典? OS 蝟餌絞隤輻?嚗?頞? iOS/Android 瘝??湔蝳迫頝券脩?瘜典嚗???|
+## 📝 如何設定安全策略？(How to Configure Vajra.md)
+
+DROS 支援兩種極簡設定方式：**人類直覺 Markdown 格式 (`Vajra.md`)** 與 **結構化 YAML 格式 (`demo_policy.yaml`)**。
+
+### 1. 📄 人類直覺寫法範例 (`Vajra.md`)
+只需以白話 Markdown 宣告允許執行的白名單與防禦邊界：
+
+```markdown
+# 🛡️ DROS Agent 安全策略規範 (Vajra.md)
+
+## 1. 允許執行的工具 (Allowed Capabilities)
+- 允許讀取當前工作區檔案 (`file_read`)
+- 允許執行一般查詢 (`search_web`, `query_db`)
+- 允許終端執行唯讀指令 (`git status`, `npm test`, `cargo check`)
+
+## 2. 嚴格禁止的邊界 (Strict Fail-Closed Boundaries)
+- 禁止執行任何遞迴刪除或清空指令 (`rm -rf`, `rmdir /s`, `format`)
+- 禁止存取敏感憑證檔案 (`.env`, `id_rsa`, `secrets.json`, `.aws/credentials`)
+- 禁止單筆交易金額超過 1,000 元 (`amount <= 1000`)
+```
+
+---
+
 
 > [!IMPORTANT]
-> **?函蔡?捱璇辣 (Deployment Precondition)**嚗?*?gent 摰瘛芷銝??嗆?蝡??拍? Fail-Closed??* 靽?嚗?*? Agent ??Gateway ?函蔡?潮??Ｗ捆?冽??蝬脰楝?嚗?蝬?Raw Socket ??OS ?詨?撠?嚗???**???犖摰蹂蜓璈?嚗n-Process ?雿?Ｗ??????瑼Ｘ暺?
+> 🔒 **極重要安全提示：設定完成後請將 `Vajra.md` 設為唯讀 (Read-Only)！**
+> 為了徹底杜絕失控或遭受提示詞注入 (Prompt Injection) 的 AI Agent 試圖「自己改寫安全策略」來為自己解鎖特權，**請在設定完成後，將該檔案權限鎖定為唯讀**：
+> - **Linux / macOS**: `chmod 444 Vajra.md`
+> - **Windows (PowerShell)**: `Set-ItemProperty -Path Vajra.md -Name IsReadOnly -Value $true`
+> - **Docker 掛載時**: 使用唯讀掛載模式 `-v $(pwd)/Vajra.md:/app/demo_policy.yaml:ro`
+> 
+> *(註：DROS 內核自帶「四重不變量防禦」，任何針對核心策略檔的寫入 Syscall 都會被微秒級攔截熔斷；搭配作業系統檔案鎖可達成 100% 物理防禦！)*
+
+
+### 2. 🤖 讓 AI 幫你一秒生成策略！(AI Prompt Template)
+
+您不需要從零手寫！直接將以下**「萬用提示詞 (Prompt)」**複製給 ChatGPT、Claude 或 Cursor，AI 就會自動產出標準合規的 `Vajra.md`：
+
+> 📋 **複製這段 Prompt 給任何 LLM / Agent：**
+> 
+> ```text
+> 你現在是 DROS 確定性安全架構專家。請根據我的 Agent 角色，為我生成一份標準的 DROS「Vajra.md」安全策略 Markdown 檔案。
+> 
+> 我的 Agent 需求如下：
+> - Agent 角色與場景：【例如：全端工程師 / 客服機器人 / 自動化財務助理】
+> - 允許的工具與操作：【例如：讀寫代碼、執行 npm test、查詢訂單資料庫】
+> - 嚴格禁止的邊界：【例如：禁止刪除根目錄、禁止讀取 .env、單次轉帳上限 500】
+> 
+> 請遵循 DROS「預設拒絕 (Default Fail-Closed)」白名單原則，生成清晰的 Markdown 規則區塊，包含：
+> 1. 角色定義與授權範疇 (Role & Scope)
+> 2. 白名單工具 (Allowed Capabilities)
+> 3. 邊界條件約束 (Thresholds & Security Patterns)
+> ```
 
 ---
 
-## ?? ?銵?格?敹?銵???(Technical Whitepapers & Core Papers)
+### 3. 🔄 策略即時熱更新 (Hot Reloading)
+啟動 Docker 網關時，只需將您的 `Vajra.md` 掛載進去，修改存檔後 **1 微秒內即時生效，無需重啟容器**：
+```bash
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/Vajra.md:/app/demo_policy.yaml \
+  dros/hacker-gateway:v1.0.0
+```
 
-DROS ?瑁??Ⅱ摰扳祥?瑽?雓寧?摮貉?隤?隢蝷??函頂???餃歇?脣??飛銵??舐砥??DOI 瘞訾?摮?嚗?
 
-### ?妣 蝘??冽撠? (Master Overview & Falsification Manifesto)
-*   **?ROS ?冽蝘?撠?嚗蝭?????????隢?蝟餉??航??賣扯??*
-    *   *A Synoptic Guide to the DROS Program: Problem Formulation, Theoretical Architecture, and Falsification Criteria*
-    *   **Zenodo DOI**: [`10.5281/zenodo.22255275`](https://doi.org/10.5281/zenodo.22255275) | **Record**: [zenodo.org/records/22255275](https://zenodo.org/records/22255275)
+## 📜 相關技術核心論文與實測驗證 (Technical Foundations & Benchmarks)
 
----
+本專案之確定性執行治理、微秒級熔斷與密碼學存證機制，參考並延伸自以下核心技術論文與開源實測環境：
 
-### ? ?剖之?詨??銵???(The 6-Paper Program)
+1. **核心架構與六大信任邊界 (Core Architecture)**:
+   * **論文**: *DROS-6P: A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*
+   * **Zenodo DOI**: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970) | **記錄典藏**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
 
-1. ??儭?**Paper 1: DROS-6P (瘝餌?閬撅??? 隡平靽∩遙?憭折??祥??**
-   * *DROS-6P: A Unified Deterministic Runtime Governance Architecture Closing the Six Fundamental Trust Boundaries of Enterprise AI Agents*
-   * **Zenodo DOI**: [`10.5281/zenodo.21833970`](https://doi.org/10.5281/zenodo.21833970) | **Record**: [zenodo.org/records/21833970](https://zenodo.org/records/21833970)
+2. **四層深度防禦架構 (Defense-in-Depth Model)**:
+   * **論文**: *DROS 4-Layer Defense-in-Depth Architecture for Autonomous AI Workloads*
+   * **Zenodo DOI**: [`10.5281/zenodo.21903475`](https://doi.org/10.5281/zenodo.21903475) | **記錄典藏**: [zenodo.org/records/21903475](https://zenodo.org/records/21903475)
 
-2. ?儭?**Paper 2: DROS 4-Layer (?瑁??賢撅??? ?惜瘛勗漲?脩戌蝮望楛?嗆?)**
-   * *DROS 4-Layer Defense-in-Depth Architecture for Autonomous AI Workloads*
-   * **Zenodo DOI**: [`10.5281/zenodo.22092008`](https://doi.org/10.5281/zenodo.22092008) | **Record**: [zenodo.org/records/22092008](https://zenodo.org/records/22092008)
+3. **外掛 FFI 與不可否認存證模組 (Runtime Attribution Framework)**:
+   * **論文**: *Runtime Attribution Framework: An External C-ABI and PKI-Based Zero-Trust Infrastructure for Non-Repudiable Execution Governance in Multi-Agent Systems*
+   * **Zenodo DOI**: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687) | **記錄典藏**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
 
-3. ?? **Paper 3: DROS-PGM (?扳?批撅??? 撖阡??脰風璅∠????臬隤折?銵?甇貉痊)**
-   * *Runtime Attribution Framework: An External C-ABI and PKI-Based Zero-Trust Infrastructure for Non-Repudiable Execution Governance in Multi-Agent Systems*
-   * **Zenodo DOI**: [`10.5281/zenodo.21903687`](https://doi.org/10.5281/zenodo.21903687) | **Record**: [zenodo.org/records/21903687](https://zenodo.org/records/21903687)
-
-4. ?? **Paper 4: DROS-WebMCP (蝬脩窗?賢?撅??? Agentic Web ???脣銵祥??**
-   * *DROS-WebMCP: A Cryptographically Attributable Execution Governance Layer for the Agentic Web*
-   * **Zenodo DOI**: [10.5281/zenodo.22290238](https://doi.org/10.5281/zenodo.22290238) | **Record**: [zenodo.org/records/22290238](https://zenodo.org/records/22290238)
-
-5. ? **Paper 5: Post-Compromise Mobile (?訾?蝟餌絞撖西? ?? ?訾?蝟餌絞撖西?)**
-   * *Post-Compromise Security for Autonomous Mobile Agents: A Deterministic Runtime Attenuation and Proof-Carrying Authorization Architecture*
-   * **Zenodo DOI**: [`10.5281/zenodo.22253147`](https://doi.org/10.5281/zenodo.22253147) | **Record**: [zenodo.org/records/22253147](https://zenodo.org/records/22253147)
-
-6. ? **Paper 6: Post-Compromise Physical AI / UAV (蝬脩窗-撖阡?撖西? ?? 蝬脩窗-撖阡?撖西?)**
-   * *Post-Compromise Security for Physical AI: Deterministic Runtime Enforcement of Physical Action Authority in Autonomous UAVs*
-   * **Zenodo DOI**: [`10.5281/zenodo.22254372`](https://doi.org/10.5281/zenodo.22254372) | **Record**: [zenodo.org/records/22254372](https://zenodo.org/records/22254372)
-
----
-*??閰葫???賣???[DROS-VEP Lite (GitHub)](https://github.com/Top-Celestial-Company-Ltd/dros-vep-lite) ?? 摰? RFC-001 憡?璅∪???4 ?挾??望?皜祈岫??
+4. **開源技術標準與實測基準倉 (Open Standard & Verification Sandbox)**:
+   * **RFC-010 規範**: 遵循開放 Agent 身分與存證規範（W3C DID `did:key` 與 Ed25519 簽章鏈）。
+   * **實測基準環境**: [DROS-VEP Lite (可復現安全評測沙盒)](https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite)
+   * **實測報告**: 涵蓋 24 小時長效多場景測試數據（160,611 次請求驗證，決策延遲 26.1μs）。
 
 ---
 
-## ??儭?摰?潸?蝯??蝜怨?閮?(Official Contact)
-* **?潸?銝駁?**嚗op-Celestial Company Ltd. (摨瑕捂?????
-* **摰蝬脩?**嚗https://dr-os.io](https://dr-os.io)
-* **摰Ｘ?????垣閰?*嚗service@dr-os.io](mailto:service@dr-os.io)
-* **GitHub 摰蝯?**嚗https://github.com/Top-Celestial-Company-Ltd](https://github.com/Top-Celestial-Company-Ltd)
+## ⚠️ 使用注意事項與安全性約定
+
+1. **預設拒絕原則 (Fail-Closed)**：
+   * 當 Docker 網關啟用時，所有未在 `demo_policy.yaml` 明確宣告為 `ALLOW` 的高危工具呼叫將預設被硬性阻斷。
+2. **零特權原則 (Least Privilege)**：
+   * 宿主 AI Agent 嚴禁被賦予對 `policy.bin` 或 `demo_policy.yaml` 的寫入權限；在正式部署時策略檔必須以唯讀 (Read-Only) 模式掛載。
+3. **授權碼選填說明**：
+   * 本 Hacker 版預設以 Community 模式直接運行（支援 2 個並發 Agent）；若需解鎖 5 個並發 Agent，可於啟動時帶入 `-e DROS_LICENSE_KEY="your-key"` 或由 DSH 介面填入。
 
 ---
 
-## ?? ????閬?(Licensing & Compliance)
+## ⚖️ 授權與智慧財產權憲法聲明 (License & IP Constitution)
 
-*   **??璅∪? (License Model)**: **皞Ⅳ?舐??嚗ource-Available嚗??平?券??犖閰摯?祥嚗?*?遙雿?璆剖??函蔡?aaS 閮恣??璆剔??Ｙ憓矽?剁????????平閮??璆剜?甈?蝝?
-*   **撠摰?? (Patent Notice)**: DROS ?瑁?瘝餌????冽?銵歇?唾?蝢??冽?撠靽風嚗?*U.S. Patent Application No. 64/111,973嚗atent Pending**嚗?
-*   **摮貉?靘?????(Academic Preprints & Specs)**: ?嗆????箇?撱箇???Zenodo ?祇?摮???祉頂????DOI: 10.5281/zenodo.21808499 蝟餃?嚗????折?銵瑽?蝭?DROS-RFC-010嚗?
+* **個人與社群使用 (Free for Individuals)**：
+  * 本軟體授予個人開發者永久免費非商業使用權（Free License for Individuals），允許在單一主機上治理最多 5 個並發 AI Agent。源代碼與專利技術由 Top-Celestial 專有保留，嚴禁未經授權之二次分發、轉售或逆向工程。
+* **企業商用部署 (Commercial Licensing)**：
+  * 任何企業法人、受薪雇員商用或正式生產環境實施，嚴格需要商業授權（Startup / Enterprise / Sovereign）。商業授權請洽 [service@dr-os.io](mailto:service@dr-os.io) 或造訪 [https://dr-os.io](https://dr-os.io)。
+* **專利保護聲明 (Patent Notice)**：
+  * DROS 確定性執行治理與帶內微秒級熔斷技術已申請美國臨時專利保護（**U.S. Provisional Patent Application No. 64/111,973，Patent Pending**）。所有商業部署與實施權益由 康宸園有限公司 (Top-Celestial Company Ltd.) 專有保留。
 
----
-*DROS ?平?Ｗ?蝑憪???? ?０摰嚗?頛芷?摰??Ｘ平??憟??滯?嫘? ???儭?儭?
----
 
-## License
+## 🛡️ 治理與防禦能力對照矩陣 (Defense Capability Matrix)
 
-DROS VajraClaw Hacker Edition is **not Open Source software**.
-
-The source code is made available under a proprietary
-personal and non-commercial free license.
-
-- Personal use: **Free**
-- Non-commercial use: **Free**
-- Commercial use: **Requires a separate commercial license**
-- Open Source / OSI license: **Not granted**
-
-Patent pending:
-U.S. Provisional Patent Application No. 64/111,973.
-
-A provisional patent application is not a granted patent.
-
-See LICENSE for the complete license terms.
----
-
-## License
-
-DROS VajraClaw Hacker Edition is **not Open Source software**.
-
-The source code is made available under a proprietary
-personal and non-commercial free license.
-
-- Personal use: **Free**
-- Non-commercial use: **Free**
-- Commercial use: **Requires a separate commercial license**
-- Open Source / OSI license: **Not granted**
-
-Patent pending:
-U.S. Provisional Patent Application No. 64/111,973.
-
-A provisional patent application is not a granted patent.
-
-See LICENSE for the complete license terms.
----
-
-## License
-
-DROS VajraClaw Hacker Edition is **not Open Source software**.
-
-The source code is made available under a proprietary
-personal and non-commercial free license.
-
-- Personal use: **Free**
-- Non-commercial use: **Free**
-- Commercial use: **Requires a separate commercial license**
-- Open Source / OSI license: **Not granted**
-
-Patent pending:
-U.S. Provisional Patent Application No. 64/111,973.
-
-A provisional patent application is not a granted patent.
-
-See LICENSE for the complete license terms.
-
+| 威脅防禦維度 / 核心能力 | 傳統 LLM 防護 (NeMo / 提示詞審查) | 📦 DSH 獨立 TypeScript 外掛 | 🛡️ DROS Hacker Docker 網關 | 🏢 企業版 / K8s 集群 |
+| :--- | :---: | :---: | :---: | :---: |
+| **運行載體 (Vehicle)** | 雲端 API / 外部大模型 | 進程內原生 JS (零外部依賴) | **本地 Docker 容器 (`:8080`)** | 企業集群 / K8s / C-ABI 微核心 |
+| **保護範圍 (Scope)** | 單次對話 Session | DSH 單一本機進程 | **全生態 (Claude+Codex+Cursor+DSH+AGY)** | 跨主機節點集群 / 私有雲 |
+| **執行意圖治理 (Governance)** | 🔴 僅限文字模糊比對 | 🟢 **正則表達式硬防線 (Regex Failsafe)** | 🟢 **100% 確定性 AST 語法樹熔斷 (<1µs)** | 🟢 **AST 點陣圖 ＋ eBPF 內核級攔截** |
+| **破壞性指令攔截 (Destructive)** | 🔴 易遭提示注入與編碼繞過 | 🟢 **敏感路徑物理阻斷** | 🟢 **底層 Syscall 物理硬熔斷** | 🟢 **硬體 HSM 隔離 ＋ 內核檔案鎖** |
+| **機密與金鑰防洩漏 (Secrets)** | 🔴 無物理安全防線 | 🟢 **敏感路徑讀取阻斷** | 🟢 **動態遮蔽 ＋ 虛擬沙箱隔離** | 🟢 **硬體 HSM ＋ 零知識微證明 (ZKP)** |
+| **Agent 主體身分綁定 (Identity)** | 🔴 無身分認證 | 🟢 Session 級別識別碼 | 🟢 **原生 W3C `did:key` (Ed25519 簽章)** | 🟢 **三層 PKI `DrosIdentityToken (DIT)`** |
+| **不可篡改審計存證 (Audit)** | 🔴 普通可竄改文字 Log | 🟢 **本地 SHA-256 雜湊鏈** | 🟢 **Ed25519 簽章 Merkle 雜湊鏈** | 🟢 **歐盟 AI 法案第 12 條法院級存證** |
+| **RFC-010 代理通行證 (Passport)** | 🔴 不支援 | 🟢 格式解析器 | 🟢 **本地發行 ＋ 跨 Agent 密碼學驗證** | 🟢 **跨組織漫遊通行證與權限繼承** |
+| **決策延遲 (Decision Latency)** | 🔴 1,000 ~ 3,000 ms (二次模型極慢) | 🟢 **<1 ms (記憶體直接攔截)** | 🟢 **<1 µs (C-ABI) / <1 ms (REST 網關)** | 🟢 **<500 ns (零拷貝常數時間查表)** |
+| **授權條款 (License)** | 按 Token 計費 | **個人永久免費授權 (非開源專利保護)** | **個人永久免費授權 (Free for Individuals)** | 新創版 $2,990 / 企業版 $29,990 |

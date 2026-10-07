@@ -1,96 +1,77 @@
-﻿# ?賂? Deterministic Runtime OS (DROS) - VajraClaw Hacker Edition
+# 🛡️ Deterministic Runtime OS (DROS) - VajraClaw Hacker Edition
+**The Deterministic In-Band Execution Governance Gateway for Autonomous Agentic AI**
 
-Welcome to VajraClaw Hacker Edition! To provide a better reading experience, we have separated our documentation into dedicated Chinese and English versions.
+[![License: Source-Available](https://img.shields.io/badge/License-Source--Available%20(Non--Commercial)-blue.svg)](#-licensing--intellectual-property)
+[![Patent Status](https://img.shields.io/badge/U.S._Patent_Pending-64%2F111%2C973-blue.svg)](#-licensing--intellectual-property)
+[![Official Website](https://img.shields.io/badge/Official_Website-dr--os.io-purple.svg)](https://dr-os.io)
+[![Technical Reports](https://img.shields.io/badge/Open_Archive-Zenodo_Preprints-purple.svg)](https://doi.org/10.5281/zenodo.21808499)
 
-甇∟?雿輻 VajraClaw Hacker Edition嚗鈭?靘憟賜??梯?擃?嚗??歇撠??寞?隞嗆???函??葉???????
+📖 **Documentation / 語言選擇**: [English (Default)](README.md) | [繁體中文文檔 (Traditional Chinese)](README_ZH.md)
+
+---
+
+> 🛑 **"If runtime security depends on model intelligence, the system is already broken."**
+>
+> Prompt engineering and guardrails fail under adaptive adversarial jailbreaks. 
+> **DROS is NOT a prompt wrapper. It is an In-Band Execution Governance Gateway.** 
+> By moving verification to compile-time capabilities, DROS enforces deterministic policy gates at runtime:
+> * **In-Process C-ABI / Rust Core**: **$< 3\ \mu\text{s}$** deterministic capability bitmap evaluation (zero-heap, in-memory bitmasking).
+> * **Docker Loopback Gateway**: **$< 1\ \text{ms}$** local HTTP/IPC proxy latency for multi-agent harness environments.
 
 ---
 
-## ?? Official Documentation | 摰?辣?桅?
+## 📚 Official Documentation Navigation
 
-### 1. Readme / 蝟餌絞撠?
-*   **[README_ZH.md (蝜?銝剜?)](file:///README_ZH.md)**: ?Ｗ?蝪∩??頂蝯曹漁暺???璇狡??
-*   **[README_EN.md (English)](file:///README_EN.md)**: Product overview, features, and licensing terms.
-
-### 2. Safety Guidelines / 摰?怎?閬?
-*   **[SAFETY_ZH.md (蝜?銝剜?)](file:///SAFETY_ZH.md)**: DROS ?怎????賡??恐?uardVM ?蝑??
-*   **[SAFETY_EN.md (English)](file:///SAFETY_EN.md)**: Doctrinal safety boundaries and GuardVM interception policy.
-
-### 3. Verification Guide / ?砍皜祈岫撽???
-*   **[VERIFICATION_GUIDE_ZH.md (蝜?銝剜?)](file:///VERIFICATION_GUIDE_ZH.md)**: ?砍 CLI 閮箸皜祈岫??甇仿?霅? Python API ?游?皜祈岫??
-*   **[VERIFICATION_GUIDE_EN.md (English)](file:///VERIFICATION_GUIDE_EN.md)**: Local verification workflow, CLI diagnostic steps, and SDK testing.
-
-### 4. Cryptographic Key Management / ???霅?隞賣???
-*   **[docs/KEY_MANAGEMENT.md (蝜?銝剜?)](file:///docs/KEY_MANAGEMENT.md)**: ?冽??憸券???啣?隞賣獢??賡敺拙? SOP??
-*   **[docs/KEY_MANAGEMENT_EN.md (English)](file:///docs/KEY_MANAGEMENT_EN.md)**: Ephemeral key risks, static key backup, and disaster recovery procedures.
-
-### 5. DROS Boundaries & Vajra Contract Guide / 蝟餌絞摰?脩?????Vajra 撖阡????啣神??
-*   **[DROS_BOUNDARY_AND_VAJRA_GUIDE_ZH.md (蝜?銝剜?)](file:///DROS_BOUNDARY_AND_VAJRA_GUIDE_ZH.md)**: 撠平?蝙?刻?閬?璈???券蝭????脖?鈭?璆菟?嚗ajra.md ???扯? AI ?內閰??研?
-*   **[DROS_BOUNDARY_AND_VAJRA_GUIDE_EN.md (English)](file:///DROS_BOUNDARY_AND_VAJRA_GUIDE_EN.md)**: Dual perspective mechanics, safety boundaries, Vajra.md significance, and AI prompt template.
-
-### 6. Hacker Edition Developer Manual / ?犖?隞餃??????
-*   **[docs/DROS_HACKER_EDITION_MANUAL.md (蝜?銝剜?)](file:///docs/DROS_HACKER_EDITION_MANUAL.md)**: 撠?犖???擏剖恥?澈??蝝?CLI ?瑚遙?蝳艾犖憿蜓甈???(`[HUMAN SEALED]`)??璆剔頂蝯勗霈蝖祇?摰???摰?郎?梯??急?閫?? SOP??
+| Document | Language | Description |
+| :--- | :--- | :--- |
+| **[README_EN.md](README_EN.md)** | English | Detailed product overview, benchmarks, and licensing terms |
+| **[README_ZH.md](README_ZH.md)** | 繁體中文 | 完整產品架構、微秒級熔斷原理與個人免費版中文說明 |
+| **[SAFETY_EN.md](SAFETY_EN.md)** / **[SAFETY_ZH.md](SAFETY_ZH.md)** | EN / 繁中 | Ethical boundaries, GuardVM sandbox policy, and scope limits |
+| **[VERIFICATION_GUIDE_EN.md](VERIFICATION_GUIDE_EN.md)** | English | Zero-dependency local CLI verification, diagnostics, and testing |
+| **[docs/KEY_MANAGEMENT.md](docs/KEY_MANAGEMENT.md)** | Bilingual | Ephemeral keys, static key backup, and disaster recovery SOP |
+| **[DROS_BOUNDARY_AND_VAJRA_GUIDE_EN.md](DROS_BOUNDARY_AND_VAJRA_GUIDE_EN.md)** | English | Dual-perspective mechanics and Vajra policy authoring guide |
 
 ---
-*DROS System Governance Group. Powered by Antigravity AI.*
+
+## 🚀 Quick Start (Docker Loopback Gateway)
+
+Run the pre-built gateway container locally (no API key required for local evaluation):
+
+```bash
+docker run -d -p 8080:8080 --name dros-gateway \
+  -v $(pwd)/FreeTrial-Sandbox/demo_policy.yaml:/app/demo_policy.yaml \
+  dros/hacker-gateway:v2.1.0
+```
+
+### Connect with MCP Clients (Claude, Cursor, Codex, Antigravity)
+Add DROS Gateway to your client configuration (`mcp_settings.json`):
+```json
+{
+  "mcpServers": {
+    "dros-governance": {
+      "url": "http://localhost:8080/mcp",
+      "transport": "http"
+    }
+  }
+}
+```
+
 ---
 
-## License
+## ⚖️ Licensing & Intellectual Property
 
-DROS VajraClaw Hacker Edition is **not Open Source software**.
+DROS VajraClaw Hacker Edition is **proprietary software** provided under a **personal, non-commercial free license**.
 
-The source code is made available under a proprietary
-personal and non-commercial free license.
+* **Personal Use**: **Free**
+* **Non-Commercial Research & Evaluation**: **Free**
+* **Commercial / Enterprise Production Use**: **Requires a commercial license** ([dr-os.io](https://dr-os.io))
+* **Open Source / OSI License**: **Not Granted** (Not Apache-2.0, Not AGPL)
 
-- Personal use: **Free**
-- Non-commercial use: **Free**
-- Commercial use: **Requires a separate commercial license**
-- Open Source / OSI license: **Not granted**
+### 🛡️ Patent Notice
+DROS execution governance and security technology is protected under:
+> **U.S. Provisional Patent Application No. 64/111,973 (Patent Pending)**  
+> *(A provisional patent application establishes priority and is not a granted patent.)*
 
-Patent pending:
-U.S. Provisional Patent Application No. 64/111,973.
-
-A provisional patent application is not a granted patent.
-
-See LICENSE for the complete license terms.
 ---
 
-## License
-
-DROS VajraClaw Hacker Edition is **not Open Source software**.
-
-The source code is made available under a proprietary
-personal and non-commercial free license.
-
-- Personal use: **Free**
-- Non-commercial use: **Free**
-- Commercial use: **Requires a separate commercial license**
-- Open Source / OSI license: **Not granted**
-
-Patent pending:
-U.S. Provisional Patent Application No. 64/111,973.
-
-A provisional patent application is not a granted patent.
-
-See LICENSE for the complete license terms.
----
-
-## License
-
-DROS VajraClaw Hacker Edition is **not Open Source software**.
-
-The source code is made available under a proprietary
-personal and non-commercial free license.
-
-- Personal use: **Free**
-- Non-commercial use: **Free**
-- Commercial use: **Requires a separate commercial license**
-- Open Source / OSI license: **Not granted**
-
-Patent pending:
-U.S. Provisional Patent Application No. 64/111,973.
-
-A provisional patent application is not a granted patent.
-
-See LICENSE for the complete license terms.
-
+*Top-Celestial Company Ltd. (康宸園有限公司) ── Commercial inquiries: [service@dr-os.io](mailto:service@dr-os.io)*
