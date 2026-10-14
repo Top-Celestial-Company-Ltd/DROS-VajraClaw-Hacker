@@ -216,9 +216,8 @@ docker run -d -p 8080:8080 --name dros-gateway \
    * 當 Docker 網關啟用時，所有未在 `demo_policy.yaml` 明確宣告為 `ALLOW` 的高危工具呼叫將預設被硬性阻斷。
 2. **零特權原則 (Least Privilege)**：
    * 宿主 AI Agent 嚴禁被賦予對 `policy.bin` 或 `demo_policy.yaml` 的寫入權限；在正式部署時策略檔必須以唯讀 (Read-Only) 模式掛載。
-3. **授權碼選填說明**：
-   * 本 Hacker 版預設以 Community 模式直接運行（支援 2 個並發 Agent）；若需解鎖 5 個並發 Agent，可於啟動時帶入 `-e DROS_LICENSE_KEY="your-key"` 或由 DSH 介面填入。
-
+3. **並發執行能力說明**：
+   - DROS VajraClaw Hacker 版預設支援最多 **5 個並發 Agent**，無須提供授權碼或額外設定即可使用。
 ---
 
 ## ⚖️ 授權與智慧財產權憲法聲明 (License & IP Constitution)
