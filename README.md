@@ -24,10 +24,10 @@
 
 | Document | Language | Description |
 | :--- | :--- | :--- |
-| **[README_EN.md](README_EN.md)** | English | Detailed product overview, benchmarks, and licensing terms |
-| **[README_ZH.md](README_ZH.md)** | 繁體中文 | 完整產品架構、微秒級熔斷原理與個人免費版中文說明 |
-| **[SAFETY_EN.md](SAFETY_EN.md)** / **[SAFETY_ZH.md](SAFETY_ZH.md)** | EN / 繁中 | Ethical boundaries, GuardVM sandbox policy, and scope limits |
-| **[VERIFICATION_GUIDE_EN.md](VERIFICATION_GUIDE_EN.md)** | English | Zero-dependency local CLI verification, diagnostics, and testing |
+| **[README_EN.md](README_EN.md)** | English | Detailed product overview, 6-pillar matrix, and architecture benchmarks |
+| **[README_ZH.md](README_ZH.md)** | 繁體中文 | 完整產品架構、微核心微秒級熔斷原理與個人免費版中文說明 |
+| **[SAFETY.md](SAFETY.md)** | Bilingual | Security boundary, ethical hacking, GuardVM policy, and CVD disclosure SOP |
+| **[VERIFICATION_GUIDE.md](VERIFICATION_GUIDE.md)** | Bilingual | Zero-dependency local CLI verification, diagnostics, and SDK testing |
 | **[docs/KEY_MANAGEMENT.md](docs/KEY_MANAGEMENT.md)** | Bilingual | Ephemeral keys, static key backup, and disaster recovery SOP |
 | **[DROS_BOUNDARY_AND_VAJRA_GUIDE_EN.md](DROS_BOUNDARY_AND_VAJRA_GUIDE_EN.md)** | English | Dual-perspective mechanics and Vajra policy authoring guide |
 

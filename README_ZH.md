@@ -1,5 +1,5 @@
 # ⚡ DROS™ VajraClaw (Hacker Edition 個人免費版)
-### 專為個人開發者打造的獨立 Docker 執行期治理網關 (支援 W3C DID、<1μs 微秒級熔斷與多 Agent 全生態聯防)
+### 專為個人開發者打造的獨立 Docker 執行期治理網關 (支援 W3C DID、<3μs 記憶體微秒級查表、<1ms 網關阻斷與多 Agent 全生態聯防)
 
 [![官方網站](https://img.shields.io/badge/官方網站-dr--os.io-purple.svg?style=for-the-badge)](https://dr-os.io)
 [![Docker Ready](https://img.shields.io/badge/Docker-Ready-blue.svg)](#)
@@ -7,7 +7,7 @@
 [![美國臨時專利](https://img.shields.io/badge/美國臨時專利-64%2F111%2C973-blue.svg)](#)
 [![RFC-010 護照標準](https://img.shields.io/badge/標準-RFC--010_Draft-orange.svg)](#)
 
-[English](README.md) | [繁體中文說明](README_zh.md) | [🌐 官方網站](https://dr-os.io)
+[English](README.md) | [繁體中文說明](README_ZH.md) | [🌐 官方網站](https://dr-os.io)
 
 **DROS VajraClaw Hacker Edition** 是官方專為個人開發者、研究人員及獨立工作站打造的**永久免費獨立 Docker 治理網關 (Free License for Individuals)**。它在自主 AI Agent（Google Antigravity、Anthropic Claude、OpenAI Codex、Cursor、CrewAI、AutoGen、DeepSeek Harness）與您的本機作業系統之間，建立不可逾越的實體執行期安全防線。
 
@@ -16,11 +16,11 @@
 ## 🛑 為什麼需要 DROS 確定性治理？
 傳統依賴 Prompt Engineering、Llama-Guard 或模型自我審查的「機率型安全」在執行期必定潰敗：
 * **提示注入 (Prompt Injection) 輕易繞過**：黑客只需簡單的混淆或 Jailbreak 即可誘騙 Agent 執行 `rm -rf /` 或外洩敏感金鑰。
-* **無法防範執行期競爭 (TOCTOU) 與延遲**：調用外部審查模型會產生 1~3 秒的巨大延遲，且無法管到作業系統系統呼叫 (Syscall)。
+* **無法防範執行期競爭 (TOCTOU) 與延遲**：調用外部審查模型會產生 1~3 秒的巨大延遲，且無法管到 Agent 底層工具調用與特權操作。
 * **缺乏法律不可否認性**：無法從密碼學上證明 *為什麼* Agent 執行了某項特權操作。
 
 **DROS 不是 Prompt 包裝器，而是確定性執行期作業系統 (Deterministic Runtime OS)**：
-將安全智慧移至編譯期 (`demo_policy.yaml` / `Vajra.md`)，並在運行期透過純記憶體常數時間 $\mathcal{O}(1)$ 位元圖譜直接在系統呼叫前**硬性熔斷 (Strict Fail-Closed)**！
+將安全智慧移至編譯期 (`demo_policy.yaml` / `Vajra.md`)，並在運行期透過純記憶體常數時間 $\mathcal{O}(1)$ 位元圖譜直接在惡意工具調用發起前**硬性熔斷 (Strict Fail-Closed)**！
 
 ---
 
@@ -28,7 +28,7 @@
 
 * 🛡️ **守護最多 5 個並發 Agent**：在單台個人開發機上，同時為多個不同平台的活躍 Agent 提供帶內執行期防護。
 * 🔑 **原生 W3C `did:key` 與 RFC-010 護照**：基於 Ed25519 數位簽章的密碼學身分綁定，杜絕跨進程偽造。
-* ⚡ **微秒級帶內硬熔斷 (<1μs)**：確定性 $\mathcal{O}(1)$ AST 策略查表，在惡意系統呼叫發起瞬間物理阻斷。
+* ⚡ **微秒級帶內硬熔斷 (<3μs PDP / <1ms Gateway)**：確定性 $\mathcal{O}(1)$ AST 策略查表，在惡意工具調用發起瞬間物理阻斷。
 * 📜 **SHA-256 Merkle 雜湊鏈審計記錄**：具備不可否認性的本地執行軌跡與重啟回讀機制，防範任何日誌竄改。
 * 🌐 **通用跨 Agent 全生態相容**：提供原生 REST 與 MCP 介面，全面支援 AGY、Claude、Codex、Cursor、LangChain、CrewAI 與 DSH。
 
@@ -36,17 +36,19 @@
 
 ## 📊 治理與防禦能力對照矩陣 (Defense Matrix)
 
+> 💡 **商業授權、Startup 與企業版方案之最新定價與技術支援，請統一以 [dr-os.io 官方網站](https://dr-os.io) 為準。**
+
 | 威脅向量與防護維度 | 傳統 LLM 語意審查 (Guardrails) | 📦 DSH 純 TS 外掛單機版 | ⚡ DROS Hacker Docker 網關版 (本倉) | 🏢 企業版 (Enterprise / Mesh) |
 | :--- | :---: | :---: | :---: | :---: |
 | **運行載體與依賴** | 雲端 API / 外部模型 | 純 JS 進程內 (零外部依賴) | **本地 Docker 容器 (`:8080`)** | 企業集群 / K8s / C-ABI 微核心 |
 | **守護 Agent 範圍** | 單一對話 Session | 專屬保護 DSH 本地進程 | **跨平台全生態 (Claude+Codex+Cursor+DSH+AGY)** | 全企業數千節點 / 私有雲 |
-| **防 Prompt 詐騙刪庫** | ❌ 易被 Jailbreak 繞過 | 🟢 **100% 正則安全閥攔截** | 🟢 **100% 確定性 AST 熔斷 (<1μs)** | 🟢 **AST 點陣查表 + eBPF 內核硬攔截** |
+| **防 Prompt 詐騙刪庫** | ❌ 易被 Jailbreak 繞過 | 🟢 **100% 正則安全閥攔截** | 🟢 **100% 確定性 AST 熔斷** | 🟢 **AST 點陣查表 + OS 層級 PGM 攔截** |
 | **憑證與私鑰防外洩** | ❌ 無法實體隔離 | 🟢 **敏感路徑讀取攔截** | 🟢 **動態 PII 遮蔽 + 虛擬檔案沙盒** | 🟢 **硬體 HSM 綁定 + ZKP-Lite 證明** |
 | **Agent 主體身分** | ❌ 無密碼學身分 | 🟡 Session 級識別碼 | 🟢 **原生 W3C `did:key` (Ed25519)** | 🟢 **3-Tier PKI `DrosIdentityToken (DIT)`** |
-| **不可否認審計鏈** | ❌ 明文日誌易被竄改 | 🟢 **本地 SHA-256 雜湊鏈** | 🟢 **Ed25519 簽名 Merkle 雜湊鏈** | 🟢 **歐盟 AI 法案第 12 條法院級存證** |
+| **不可否認審計鏈** | ❌ 明文日誌易被竄改 | 🟢 **本地 SHA-256 雜湊鏈** | 🟢 **Ed25519 簽名 Merkle 雜湊鏈** | 🟢 **高完整性不可否認審計存證** |
 | **RFC-010 護照** | ❌ 不支援 | 🟡 標準格式解析 | 🟢 **本地簽發與跨 Agent 交互認證** | 🟢 **分散式跨組織護照漫遊檢驗** |
-| **執行期判定延遲** | 🔴 1,000 ~ 3,000 ms | 🟢 **<1 ms (記憶體直接攔截)** | 🟢 **<1 ms (Loopback HTTP / C-ABI)** | 🟢 **<500 ns (極致 C-ABI 記憶體查表)** |
-| **授權方案** | 按 Token / 訂閱計費 | **完全免費 (非開源自訂授權)** | **個人 Hacker 永久免費授權** | Startup $2,990 / Enterprise $29,990 |
+| **執行期判定延遲** | 🔴 1,000 ~ 3,000 ms | 🟢 **<1 ms (記憶體直接攔截)** | 🟢 **<1 ms (Loopback HTTP / C-ABI)** | 🟢 **<3 μs (極致 C-ABI 記憶體查表)** |
+| **授權方案** | 按 Token / 訂閱計費 | **完全免費 (非開源自訂授權)** | **個人 Hacker 永久免費授權** | [請參閱官網方案](https://dr-os.io) |
 
 ---
 
